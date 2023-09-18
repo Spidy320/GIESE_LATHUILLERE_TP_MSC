@@ -31,7 +31,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define CMD_BUFFER_SIZE 32
+#define UART_RX_BUFFER_SIZE 32
+#define UART_TX_BUFFER_SIZE 32
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,6 +52,21 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+char buffer_cmd[1];
+char cmd[CMD_BUFFER_SIZE];
+int idxCmd = 0;
+int it_uart = 0;
+const uint8_t prompt[];
+const uint8_t started[];
+const uint8_t newLine[];
+const uint8_t help[];
+const uint8_t pinout[];
+const uint8_t powerOn[];
+const uint8_t powerOff[];
+const uint8_t cmdNotFound[];
+uint32_t uartRxReceived;
+uint8_t uartRxBuffer[UART_RX_BUFFER_SIZE];
+uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
 
 /* USER CODE END PV */
 
@@ -63,7 +80,9 @@ static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+void UART_Create_Cmd(void);
+void UART_Echo(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -106,7 +125,8 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_UART_Transmit(&huart2, "Bienvenue dans ce super shell !\r\n>>>", 36, HAL_MAX_DELAY);
+  HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,8 +134,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  if (it_uart){
+		  UART_Echo();
+		  UART_Create_Cmd();
+		  it_uart = 0;
+	  }
     /* USER CODE BEGIN 3 */
+
   }
   /* USER CODE END 3 */
 }
@@ -565,7 +590,43 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+	it_uart = 1;
+}
 
+void UART_Create_Cmd(void){
+	if (buffer_cmd[0] == '\r'){
+		if (!(strncmp(cmd,"help",4))){
+			HAL_UART_Transmit(&huart2, "Bouffon\r\n>>>", 12, HAL_MAX_DELAY);
+		}else if(!(strncmp(cmd,"pinout",6))){
+			HAL_UART_Transmit(&huart2, "PinPinPin\r\n>>>", 14, HAL_MAX_DELAY);
+		}else if(!(strncmp(cmd,"start",5))){
+			HAL_UART_Transmit(&huart2, "Moteur goes BRRRRR\r\n>>>", 23, HAL_MAX_DELAY);
+		}else if(!(strncmp(cmd,"stop",4))){
+			HAL_UART_Transmit(&huart2, "Motor goes to sleep\r\n>>>", 24, HAL_MAX_DELAY);
+		}else{
+			HAL_UART_Transmit(&huart2, "Command not found\r\n>>>", 22, HAL_MAX_DELAY);
+		}
+		idxCmd = 0;
+	}else{
+		cmd[idxCmd] = buffer_cmd[0];
+		idxCmd += 1;
+		if (idxCmd > CMD_BUFFER_SIZE){
+			idxCmd = 0;
+		}
+	}
+
+
+}
+
+void UART_Echo(void){
+	if (buffer_cmd[0] == '\r'){
+	  HAL_UART_Transmit(&huart2, "\r\n", 2, HAL_MAX_DELAY);
+	}else{
+	  HAL_UART_Transmit(&huart2, buffer_cmd, 1, HAL_MAX_DELAY);
+	}
+	HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
+}
 /* USER CODE END 4 */
 
 /**
