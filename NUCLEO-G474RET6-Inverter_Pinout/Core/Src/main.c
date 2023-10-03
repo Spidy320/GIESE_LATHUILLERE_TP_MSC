@@ -57,13 +57,13 @@ char cmd[CMD_BUFFER_SIZE];
 int idxCmd = 0;
 int it_uart = 0;
 const uint8_t prompt[];
-const uint8_t started[];
-const uint8_t newLine[];
-const uint8_t help[];
-const uint8_t pinout[];
-const uint8_t powerOn[];
-const uint8_t powerOff[];
-const uint8_t cmdNotFound[];
+const uint8_t started[] = "Bienvenue dans ce super shell !";
+const uint8_t newLine[] = "\r\n>>>";
+const uint8_t help[] = "Liste des commandes\r\nhelp : donne la liste des commandes\r\npinout : donne la liste des broches connectées\r\nstart : allume le moteur\r\nstop : eteint le moteur";
+const uint8_t pinout[] = "PC0 : U_VPh\r\nPC3 : V_VPh";
+const uint8_t powerOn[] = "Powering on the motor";
+const uint8_t powerOff[] = "Shutting down the motor";
+const uint8_t cmdNotFound[] = "Command not found";
 uint32_t uartRxReceived;
 uint8_t uartRxBuffer[UART_RX_BUFFER_SIZE];
 uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
@@ -125,8 +125,16 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Transmit(&huart2, "Bienvenue dans ce super shell !\r\n>>>", 36, HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart2, started, 31, HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
   HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
+  /* PWM */
+  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,600);
+  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,400);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,13 +142,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
 	  if (it_uart){
 		  UART_Echo();
 		  UART_Create_Cmd();
 		  it_uart = 0;
 	  }
-    /* USER CODE BEGIN 3 */
-
   }
   /* USER CODE END 3 */
 }
@@ -337,9 +345,9 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 0;
-  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 65535;
+  htim1.Init.Prescaler = 7;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
+  htim1.Init.Period = 999;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -355,7 +363,7 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 400;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -369,6 +377,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
+  sConfigOC.Pulse = 0;
   if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();
@@ -376,7 +385,7 @@ static void MX_TIM1_Init(void)
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
-  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.DeadTime = 44;
   sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
   sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
   sBreakDeadTimeConfig.BreakFilter = 0;
@@ -597,15 +606,20 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 void UART_Create_Cmd(void){
 	if (buffer_cmd[0] == '\r'){
 		if (!(strncmp(cmd,"help",4))){
-			HAL_UART_Transmit(&huart2, "Bouffon\r\n>>>", 12, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, help, 157, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"pinout",6))){
-			HAL_UART_Transmit(&huart2, "PinPinPin\r\n>>>", 14, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, pinout, 24, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"start",5))){
-			HAL_UART_Transmit(&huart2, "Moteur goes BRRRRR\r\n>>>", 23, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, powerOn, 23, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"stop",4))){
-			HAL_UART_Transmit(&huart2, "Motor goes to sleep\r\n>>>", 24, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, powerOff, 23, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else{
-			HAL_UART_Transmit(&huart2, "Command not found\r\n>>>", 22, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, cmdNotFound, 17, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}
 		idxCmd = 0;
 	}else{
@@ -621,7 +635,7 @@ void UART_Create_Cmd(void){
 
 void UART_Echo(void){
 	if (buffer_cmd[0] == '\r'){
-	  HAL_UART_Transmit(&huart2, "\r\n", 2, HAL_MAX_DELAY);
+	  HAL_UART_Transmit(&huart2, newLine, 2, HAL_MAX_DELAY);
 	}else{
 	  HAL_UART_Transmit(&huart2, buffer_cmd, 1, HAL_MAX_DELAY);
 	}
