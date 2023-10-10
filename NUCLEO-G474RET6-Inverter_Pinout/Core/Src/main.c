@@ -17,11 +17,14 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include "shell.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,9 +34,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define CMD_BUFFER_SIZE 32
-#define UART_RX_BUFFER_SIZE 32
-#define UART_TX_BUFFER_SIZE 32
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,18 +53,13 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-char buffer_cmd[1];
-char cmd[CMD_BUFFER_SIZE];
-int idxCmd = 0;
 int it_uart = 0;
-const uint8_t prompt[];
-const uint8_t started[] = "Bienvenue dans ce super shell !";
-const uint8_t newLine[] = "\r\n>>>";
-const uint8_t help[] = "Liste des commandes\r\nhelp : donne la liste des commandes\r\npinout : donne la liste des broches connectées\r\nstart : allume le moteur\r\nstop : eteint le moteur";
-const uint8_t pinout[] = "PC0 : U_VPh\r\nPC3 : V_VPh";
-const uint8_t powerOn[] = "Powering on the motor";
-const uint8_t powerOff[] = "Shutting down the motor";
-const uint8_t cmdNotFound[] = "Command not found";
+extern char buffer_cmd[];
+extern uint8_t started[];
+extern uint8_t newLine[];
+
+/*const uint8_t prompt[];*/
+
 uint32_t uartRxReceived;
 uint8_t uartRxBuffer[UART_RX_BUFFER_SIZE];
 uint8_t uartTxBuffer[UART_TX_BUFFER_SIZE];
@@ -81,8 +77,6 @@ static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
-void UART_Create_Cmd(void);
-void UART_Echo(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -128,13 +122,7 @@ int main(void)
   HAL_UART_Transmit(&huart2, started, 31, HAL_MAX_DELAY);
   HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
   HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
-  /* PWM */
-  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,600);
-  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,400);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -145,8 +133,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  if (it_uart){
-		  UART_Echo();
-		  UART_Create_Cmd();
+		  UART_Echo(huart2);
+		  UART_Create_Cmd(huart2,htim1);
 		  it_uart = 0;
 	  }
   }
@@ -599,48 +587,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+/* __________________________________________________________________________________________________________________________________________________________________________________________________*/
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	it_uart = 1;
 }
 
-void UART_Create_Cmd(void){
-	if (buffer_cmd[0] == '\r'){
-		if (!(strncmp(cmd,"help",4))){
-			HAL_UART_Transmit(&huart2, help, 157, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
-		}else if(!(strncmp(cmd,"pinout",6))){
-			HAL_UART_Transmit(&huart2, pinout, 24, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
-		}else if(!(strncmp(cmd,"start",5))){
-			HAL_UART_Transmit(&huart2, powerOn, 23, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
-		}else if(!(strncmp(cmd,"stop",4))){
-			HAL_UART_Transmit(&huart2, powerOff, 23, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
-		}else{
-			HAL_UART_Transmit(&huart2, cmdNotFound, 17, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
-		}
-		idxCmd = 0;
-	}else{
-		cmd[idxCmd] = buffer_cmd[0];
-		idxCmd += 1;
-		if (idxCmd > CMD_BUFFER_SIZE){
-			idxCmd = 0;
-		}
-	}
 
 
-}
-
-void UART_Echo(void){
-	if (buffer_cmd[0] == '\r'){
-	  HAL_UART_Transmit(&huart2, newLine, 2, HAL_MAX_DELAY);
-	}else{
-	  HAL_UART_Transmit(&huart2, buffer_cmd, 1, HAL_MAX_DELAY);
-	}
-	HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
-}
 /* USER CODE END 4 */
 
 /**

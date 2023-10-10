@@ -1,0 +1,2 @@
+../Core/Src/shell.c:24:7:UART_Create_Cmd	8
+../Core/Src/shell.c:60:6:UART_Echo	2
