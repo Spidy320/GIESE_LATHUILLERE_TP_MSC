@@ -13,7 +13,7 @@
 #define CMD_BUFFER_SIZE 32
 #endif /* INC_MOTOR_H_ */
 
-void Start_Motor(TIM_HandleTypeDef htim1,char cmd[CMD_BUFFER_SIZE]);
-void Stop_Motor(TIM_HandleTypeDef htim1);
-void Change_Speed(char cmd[CMD_BUFFER_SIZE],UART_HandleTypeDef huart2,TIM_HandleTypeDef htim1);
+void Start_Motor(char cmd[CMD_BUFFER_SIZE]);
+void Stop_Motor(void);
+void Change_Speed(char cmd[CMD_BUFFER_SIZE]);
 

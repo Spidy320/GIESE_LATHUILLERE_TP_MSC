@@ -7,17 +7,21 @@
 
 #include "motor.h"
 #include "main.h"
+#include "adc_mes.h"
+
+extern UART_HandleTypeDef huart2;
+extern TIM_HandleTypeDef htim1;
 
 int speed_buffer[4];
 const uint8_t maxSpeed[] = "Too fast my friend, too fast";
 const uint8_t speedChangedFin[] = "Speed changed";
 
-void Change_Speed(char cmd[CMD_BUFFER_SIZE],UART_HandleTypeDef huart2,TIM_HandleTypeDef htim1){
+void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 	/* Debug
-	*/
+
 	HAL_UART_Transmit(&huart2, "\r\n", 2, HAL_MAX_DELAY);
 	HAL_UART_Transmit(&huart2, cmd, 10, HAL_MAX_DELAY);
-
+*/
 	speed_buffer[0] = cmd[6] - '0';
 	speed_buffer[1] = cmd[7] - '0';
 	speed_buffer[2] = cmd[8] - '0';
@@ -49,7 +53,7 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE],UART_HandleTypeDef huart2,TIM_Handle
 
 }
 
-void Start_Motor(TIM_HandleTypeDef htim1,char cmd[CMD_BUFFER_SIZE]){
+void Start_Motor(char cmd[CMD_BUFFER_SIZE]){
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,500);
 	cmd[6] = '0'; // Pour éviter speed 6 en première instruction
@@ -62,7 +66,7 @@ void Start_Motor(TIM_HandleTypeDef htim1,char cmd[CMD_BUFFER_SIZE]){
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 }
 
-void Stop_Motor(TIM_HandleTypeDef htim1){
+void Stop_Motor(void){
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
 	HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);

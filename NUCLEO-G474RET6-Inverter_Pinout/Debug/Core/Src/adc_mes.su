@@ -1,0 +1,2 @@
+../Core/Src/adc_mes.c:22:6:Adc_init	16	static
+../Core/Src/adc_mes.c:35:6:Mes_Courant	8	static

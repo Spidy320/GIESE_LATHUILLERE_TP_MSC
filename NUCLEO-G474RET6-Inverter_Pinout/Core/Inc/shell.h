@@ -16,5 +16,5 @@
 #endif /* INC_UART_H_ */
 
 
-char* UART_Create_Cmd(UART_HandleTypeDef huart2,TIM_HandleTypeDef htim1);
-void UART_Echo(UART_HandleTypeDef huart2);
+char* UART_Create_Cmd(void);
+void UART_Echo(void);
