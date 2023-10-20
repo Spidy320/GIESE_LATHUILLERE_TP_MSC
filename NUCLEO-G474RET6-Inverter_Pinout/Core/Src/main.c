@@ -591,6 +591,7 @@ static void MX_GPIO_Init(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	it_uart = 1;
+	HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
 }
 
 

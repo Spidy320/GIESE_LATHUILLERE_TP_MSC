@@ -10,7 +10,7 @@
 #include <string.h>
 
 const uint8_t help[] = "Liste des commandes\r\nhelp : donne la liste des commandes\r\npinout : donne la liste des broches connectées\r\nstart : allume le moteur\r\nstop : eteint le moteur";
-const uint8_t pinout[] = "PC0 : U_VPh\r\nPC3 : V_VPh";
+const uint8_t pinout[] = "PA8 : U\r\nPB13 : U_barre\r\nPA9 : V\r\nPB14 : V_barre";
 const uint8_t powerOn[] = "Powering on the motor";
 const uint8_t powerOff[] = "Shutting down the motor";
 const uint8_t speedChanged[] = "Changing speed";
@@ -27,10 +27,10 @@ char* UART_Create_Cmd(UART_HandleTypeDef huart2,TIM_HandleTypeDef htim1){
 			HAL_UART_Transmit(&huart2, help, 157, HAL_MAX_DELAY);
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"pinout",6))){
-			HAL_UART_Transmit(&huart2, pinout, 24, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, pinout, 48, HAL_MAX_DELAY);
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"start",5))){
-			Start_Motor(htim1);
+			Start_Motor(htim1,cmd);
 			HAL_UART_Transmit(&huart2, powerOn, 23, HAL_MAX_DELAY);
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"stop",4))){
@@ -39,8 +39,8 @@ char* UART_Create_Cmd(UART_HandleTypeDef huart2,TIM_HandleTypeDef htim1){
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"speed",5))){
 			HAL_UART_Transmit(&huart2, speedChanged, 14, HAL_MAX_DELAY);
-			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 			Change_Speed(cmd, huart2, htim1);
+			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}
 		else{
 			HAL_UART_Transmit(&huart2, cmdNotFound, 17, HAL_MAX_DELAY);
