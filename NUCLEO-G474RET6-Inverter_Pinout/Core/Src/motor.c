@@ -37,14 +37,14 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 				speed_actl++;
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,speed_actl);
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,MAX_SPEED + 1 - speed_actl);
-				HAL_Delay(50);
+				HAL_Delay(25);
 			}
 		}else{
 			while (speed_actl > speed){
 				speed_actl--;
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,speed_actl);
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,MAX_SPEED + 1 - speed_actl);
-				HAL_Delay(50);
+				HAL_Delay(25);
 			}
 		}
 		/*HAL_UART_Transmit(&huart2, speedChangedFin, 13, HAL_MAX_DELAY);*/
