@@ -15,6 +15,7 @@ extern TIM_HandleTypeDef htim1;
 int speed_buffer[4];
 const uint8_t maxSpeed[] = "Too fast my friend, too fast";
 const uint8_t speedChangedFin[] = "Speed changed";
+int sens_rotation = 1;
 
 void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 	/* Debug
@@ -27,7 +28,12 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 	speed_buffer[2] = cmd[8] - '0';
 	speed_buffer[3] = cmd[9] - '0';
 	int speed = speed_buffer[0]*1000 + speed_buffer[1]*100 + speed_buffer[2]*10 + speed_buffer[3];
-	if (speed > MAX_SPEED){
+	if (speed < 500){
+		sens_rotation = 0;
+	}else{
+		sens_rotation = 1;
+	}
+	if (speed > MAX_SPEED || speed < 0){
 		HAL_UART_Transmit(&huart2, "\r\n", 2, HAL_MAX_DELAY);
 		HAL_UART_Transmit(&huart2, maxSpeed, 28, HAL_MAX_DELAY);
 	}else{
@@ -37,6 +43,8 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 				speed_actl++;
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,speed_actl);
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,MAX_SPEED + 1 - speed_actl);
+				//Mes_Courant();
+				//HAL_UART_Transmit(&huart2, "\t", 1, HAL_MAX_DELAY);
 				HAL_Delay(25);
 			}
 		}else{
@@ -44,6 +52,8 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 				speed_actl--;
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,speed_actl);
 				__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_2,MAX_SPEED + 1 - speed_actl);
+				//Mes_Courant();
+				//HAL_UART_Transmit(&huart2, "\t", 1, HAL_MAX_DELAY);
 				HAL_Delay(25);
 			}
 		}

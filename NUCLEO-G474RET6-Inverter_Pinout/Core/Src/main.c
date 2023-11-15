@@ -115,6 +115,7 @@ int main(void)
   HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
   HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
   Adc_init();
+  HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -187,8 +188,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
-	DMA_ADC_PrintValue();
-	//HAL_ADC_Stop_DMA(&hadc1);
+	// Fonction d'asservissement
 }
 
 

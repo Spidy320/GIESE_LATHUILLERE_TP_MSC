@@ -15,3 +15,4 @@
 void Mes_Courant(void);
 void Adc_init(void);
 void DMA_ADC_PrintValue(void);
+void Mesure_Vitesse(void);
