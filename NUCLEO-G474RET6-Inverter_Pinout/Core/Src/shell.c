@@ -16,7 +16,7 @@ extern UART_HandleTypeDef huart2;
 // définition des messages transmis par le shell
 const uint8_t help[] = "Liste des commandes\r\nhelp : donne la liste des commandes\r\npinout : donne la liste des broches connectées\r\nstart : allume le moteur\r\nstop : eteint le moteur\r\n"
 		"speed : modifie la vitesse\r\ncourant : affiche le courant en mA\r\nvitesse : affiche la vitesse du moteur";
-const uint8_t pinout[] = "PA8 : U\tPB13 : U_barre\r\nPA9 : V\tPB14 : V_barre\r\nPA1 : U_Imes\tPB1 : V_Imes\tBus_Imes : PC2";
+const uint8_t pinout[] = "PA8 : U\t\tPB13 : U_barre\r\nPA9 : V\t\tPB14 : V_barre\r\nBus_Imes : PC2 (mesure du courant)\r\nEncoder a : PA6\tEncoder b : PA4 (mesure de la vitesse)";
 const uint8_t powerOn[] = "Powering on the motor";
 const uint8_t powerOff[] = "Shutting down the motor";
 const uint8_t speedChanged[] = "Changing speed";
@@ -41,7 +41,7 @@ char* UART_Create_Cmd(void){ // Création et reconnaissance de la commande entr�
 			HAL_UART_Transmit(&huart2, help, 264, HAL_MAX_DELAY);
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"pinout",6))){
-			HAL_UART_Transmit(&huart2, pinout, 88, HAL_MAX_DELAY);
+			HAL_UART_Transmit(&huart2, pinout, 140, HAL_MAX_DELAY);
 			HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
 		}else if(!(strncmp(cmd,"start",5))){
 			Start_Motor(cmd); // lancement du moteur
