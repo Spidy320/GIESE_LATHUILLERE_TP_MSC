@@ -111,8 +111,10 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  // Affiche le message de bienvenue
   HAL_UART_Transmit(&huart2, started, 31, HAL_MAX_DELAY);
   HAL_UART_Transmit(&huart2, newLine, 5, HAL_MAX_DELAY);
+
   HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
   Adc_init();
   HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
@@ -125,7 +127,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (it_uart == 1){
+	  // Affiche les commandes entrées par l'utilisateur sur le shell
+	  if (it_uart == 1){ // Permet d'afficher chaque caractère une seule fois
 		  UART_Echo();
 		  UART_Create_Cmd();
 		  it_uart = 0;
@@ -181,14 +184,15 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 /* __________________________________________________________________________________________________________________________________________________________________________________________________*/
-
+// Attend qu'un caractère soit entré par l'utilisateur et renvoie vers la fonction d'echo dans
+// la boucle du main
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	it_uart = 1;
 	HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
-	// Fonction d'asservissement
+	// Fonction d'asservissement du courant
 }
 
 

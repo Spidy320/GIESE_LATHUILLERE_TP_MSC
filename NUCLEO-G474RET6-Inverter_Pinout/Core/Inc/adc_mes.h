@@ -12,7 +12,7 @@
 
 #endif /* INC_ADC_MES_H_ */
 
-void Mes_Courant(void);
+int32_t Mes_Courant(void);
 void Adc_init(void);
 void DMA_ADC_PrintValue(void);
-void Mesure_Vitesse(void);
+int32_t Mesure_Vitesse(void);

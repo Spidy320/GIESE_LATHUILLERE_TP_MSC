@@ -1,2 +1,2 @@
-../Core/Src/shell.c:28:7:UART_Create_Cmd	8	static
-../Core/Src/shell.c:70:6:UART_Echo	8	static
+../Core/Src/shell.c:38:7:UART_Create_Cmd	16	static
+../Core/Src/shell.c:87:6:UART_Echo	8	static
