@@ -1,8 +1,9 @@
-/*
- * adc.c
- *
- *  Created on: Oct 20, 2023
- *      Author: colin
+/**
+ * \file adc_mes.c
+ * \brief mesures du courant et de la vitesse
+ * \author Colin L, Lucas G
+ * \version 1
+ * \date 20 octobre 2023
  */
 
 #include "main.h"
@@ -31,6 +32,13 @@ uint32_t val_vitesse_t0; // permet de mesure la vitesse
 uint32_t val_vitesse_t1;
 int32_t val_vitesse;
 
+/**
+ * \fn void Adc_init(void)
+ * \brief Initialisation de l'ADC
+ *
+ * \param void
+ * \return void
+ */
 void Adc_init(void){ // initialisation de l'ADC et du DMA
 	if (HAL_OK != HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED)){
 		HAL_UART_Transmit(&huart2, error_calib, 21, HAL_MAX_DELAY);
@@ -41,12 +49,26 @@ void Adc_init(void){ // initialisation de l'ADC et du DMA
 	HAL_TIM_Base_Start(&htim1); // lancement du timer pour la conversion de l'ADC
 }
 
+/**
+ * \fn int32_t Mes_Courant(void)
+ * \brief Mesure le courant et le convertit en mA
+ *
+ * \param void
+ * \return courant_mA la valeur du courant mesuré en mA
+ */
 int32_t Mes_Courant(void){ // mesure du courant
 	int32_t courant_mA = (1000/50)*((courant_mes)*(3300000/4095) - 1650000); // multiplication par 1000 pour eviter les divisions de floats
 	courant_mA = courant_mA / 1000; // division par 1000 pour revenir en mA
 	return courant_mA;
 }
 
+/**
+ * \fn int32_t Mesure_Vitesse(void)
+ * \brief Mesure la vitesse de rotation du moteur et la convertit en tr/min
+ *
+ * \param void
+ * \return val_vitesse la valeur de la vitesse de rotation mesurée en tr/min
+ */
 int32_t Mesure_Vitesse(void){ // mesure de la vitesse
 	val_vitesse_t0 = __HAL_TIM_GET_COUNTER(&htim3);
 	HAL_Delay(100);

@@ -1,8 +1,9 @@
-/*
- * motor.c
- *
- *  Created on: Oct 10, 2023
- *      Author: colin
+/**
+ * \file adc_mes.c
+ * \brief gère la commande du moteur
+ * \author Colin L, Lucas G
+ * \version 1
+ * \date 20 octobre 2023
  */
 
 #include "motor.h"
@@ -17,6 +18,13 @@ const uint8_t maxSpeed[] = "Too fast ! 'speed xxxx'";
 const uint8_t speedChangedFin[] = "Speed changed";
 int sens_rotation = 1;
 
+/**
+ * \fn void Change_Speed(char cmd[CMD_BUFFER_SIZE])
+ * \brief Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur
+ *
+ * \param cmd[CMD_BUFFER_SIZE] buffer contenant la consigne du rapport cyclique
+ * \return void
+ */
 void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 	/* Debug
 
@@ -70,7 +78,13 @@ void Change_Speed(char cmd[CMD_BUFFER_SIZE]){
 	}
 }
 
-
+/**
+ * \fn void Start_Motor(char cmd[CMD_BUFFER_SIZE])
+ * \brief Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage
+ *
+ * \param cmd[CMD_BUFFER_SIZE] buffer contenant la consigne du rapport cyclique qui va être initialisée
+ * \return void
+ */
 void Start_Motor(char cmd[CMD_BUFFER_SIZE]){
 	// Initialisation du rapport cyclique du moteur à 500 pour avoir une vitesse nulle au démarrage
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
@@ -89,6 +103,13 @@ void Start_Motor(char cmd[CMD_BUFFER_SIZE]){
 	HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 }
 
+/**
+ * \fn void Stop_Motor(void)
+ * \brief stop les PWM et donc arrête le moteur
+ *
+ * \param void
+ * \return void
+ */
 void Stop_Motor(void){
 	// Arrêt des PWM
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);

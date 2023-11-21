@@ -1,9 +1,11 @@
-/*
- * uart.c
- *
- *  Created on: Oct 10, 2023
- *      Author: colin
+/**
+ * \file adc_mes.c
+ * \brief création du shell qui va permettre d'entrer les consignes du moteur
+ * \author Colin L, Lucas G
+ * \version 1
+ * \date 20 octobre 2023
  */
+
 #include "shell.h"
 #include "main.h"
 #include "motor.h"
@@ -35,7 +37,15 @@ char vitesse_str[5]; // valeur de la vitesse en texte
 char courant_str[5]; // valeur du courant en texte
 
 // Fonctions
-char* UART_Create_Cmd(void){ // Création et reconnaissance de la commande entrée dans le shell
+
+/**
+ * \fn char* UART_Create_Cmd(void)
+ * \brief fabrique les commandes a envoyer au shell pour effectuer les différentes fonction du microcontroleur
+ *
+ * \param void
+ * \return cmd buffer contenant la consigne du moteur
+ */
+char* UART_Create_Cmd(char* UART_Create_Cmd(void)){ // Création et reconnaissance de la commande entrée dans le shell
 	if (buffer_cmd[0] == '\r'){ // Retour à la ligne reconnu, reconnaissance de la commande
 		if (!(strncmp(cmd,"help",4))){
 			HAL_UART_Transmit(&huart2, help, 264, HAL_MAX_DELAY);
@@ -84,6 +94,13 @@ char* UART_Create_Cmd(void){ // Création et reconnaissance de la commande entr�
 	return cmd;
 }
 
+/**
+ * \fn void UART_Echo(void)
+ * \brief Permet d'afficher le caractère entré par l'utilisateur dans le shell
+ *
+ * \param void
+ * \return void
+ */
 void UART_Echo(void){ // affichage dans le shell du caractère tapé au clavier
 	if (buffer_cmd[0] == '\r'){
 	  HAL_UART_Transmit(&huart2, newLine, 2, HAL_MAX_DELAY);

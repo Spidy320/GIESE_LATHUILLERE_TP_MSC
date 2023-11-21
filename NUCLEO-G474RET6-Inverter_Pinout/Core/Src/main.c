@@ -14,6 +14,11 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
+  * \file main.c
+  * \brief fichier principal
+  * \author Colin L, Lucas G
+  * \version 1
+  * \date 20 octobre 2023
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -183,16 +188,27 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-/* __________________________________________________________________________________________________________________________________________________________________________________________________*/
-// Attend qu'un caractère soit entré par l'utilisateur et renvoie vers la fonction d'echo dans
-// la boucle du main
+/**
+ * \fn void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+ * \brief Attend qu'un caractère soit entré par l'utilisateur et renvoie vers la fonction d'echo dans la boucle du main
+ *
+ * \param *huart
+ * \return void
+ */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	it_uart = 1;
 	HAL_UART_Receive_IT(&huart2, buffer_cmd, 1);
 }
 
+/**
+ * \fn void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+ * \brief Fonction d'asservissement du courant
+ *
+ * \param *adc
+ * \return void
+ */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
-	// Fonction d'asservissement du courant
+	// L'asservissement du courant aurait du être fait ici
 }
 
 
