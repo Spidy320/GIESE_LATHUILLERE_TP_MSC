@@ -1,0 +1,124 @@
+\doxysection{shell.\+c File Reference}
+\hypertarget{shell_8c}{}\label{shell_8c}\index{shell.c@{shell.c}}
+
+
+création du shell qui va permettre d\textquotesingle{}entrer les consignes du moteur  
+
+
+{\ttfamily \#include "{}shell.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}motor.\+h"{}}\newline
+{\ttfamily \#include "{}adc\+\_\+mes.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{shell_8c_a6b491d67b6c4e947c244ab3225c2b646}\label{shell_8c_a6b491d67b6c4e947c244ab3225c2b646} 
+char \texorpdfstring{$\ast$}{*} {\bfseries UART\+\_\+\+Create\+\_\+\+Cmd} (char \texorpdfstring{$\ast$}{*}UART\+\_\+\+Create\+\_\+\+Cmd(void))
+\item 
+void \mbox{\hyperlink{shell_8c_a0354400539e9deb5ed062847a6db5106}{UART\+\_\+\+Echo}} (void)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}afficher le caractère entré par l\textquotesingle{}utilisateur dans le shell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{shell_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{shell_8c_aa9479c261d65eecedd3d9582f7f0f89c} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{shell_8c_a3369aa142a6ea1e89e677006836ee2ff}{help}} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{shell_8c_ac88f7e9fb5c08068a71fdf0108918291}\label{shell_8c_ac88f7e9fb5c08068a71fdf0108918291} 
+const uint8\+\_\+t {\bfseries pinout} \mbox{[}$\,$\mbox{]} = "{}PA8 \+: U\textbackslash{}t\textbackslash{}t\+PB13 \+: U\+\_\+barre\textbackslash{}r\textbackslash{}n\+PA9 \+: V\textbackslash{}t\textbackslash{}t\+PB14 \+: V\+\_\+barre\textbackslash{}r\textbackslash{}n\+Bus\+\_\+\+Imes \+: PC2 (mesure du courant)\textbackslash{}r\textbackslash{}n\+Encoder a \+: PA6\textbackslash{}t\+Encoder b \+: PA4 (mesure de la vitesse)"{}
+\item 
+\Hypertarget{shell_8c_aaf2189933bda013fb3c72e886dc5a3d2}\label{shell_8c_aaf2189933bda013fb3c72e886dc5a3d2} 
+const uint8\+\_\+t {\bfseries power\+On} \mbox{[}$\,$\mbox{]} = "{}Powering on the motor"{}
+\item 
+\Hypertarget{shell_8c_aeb39f657e7d4109c7d352e6ad376228a}\label{shell_8c_aeb39f657e7d4109c7d352e6ad376228a} 
+const uint8\+\_\+t {\bfseries power\+Off} \mbox{[}$\,$\mbox{]} = "{}Shutting down the motor"{}
+\item 
+\Hypertarget{shell_8c_a1fd64585fe171b58dc00e267ef1efd0f}\label{shell_8c_a1fd64585fe171b58dc00e267ef1efd0f} 
+const uint8\+\_\+t {\bfseries speed\+Changed} \mbox{[}$\,$\mbox{]} = "{}Changing speed"{}
+\item 
+\Hypertarget{shell_8c_afffb9f0c7259f40748797ec408c8becb}\label{shell_8c_afffb9f0c7259f40748797ec408c8becb} 
+const uint8\+\_\+t {\bfseries cmd\+Not\+Found} \mbox{[}$\,$\mbox{]} = "{}Command not found"{}
+\item 
+\Hypertarget{shell_8c_a755cb53f91881bf4852a1765ffc09dd6}\label{shell_8c_a755cb53f91881bf4852a1765ffc09dd6} 
+const uint8\+\_\+t {\bfseries started} \mbox{[}$\,$\mbox{]} = "{}Bienvenue dans ce super shell !"{}
+\item 
+\Hypertarget{shell_8c_ac90a286907360b1533f8d2a2a994af7e}\label{shell_8c_ac90a286907360b1533f8d2a2a994af7e} 
+const uint8\+\_\+t {\bfseries courant} \mbox{[}$\,$\mbox{]} = "{}Courant \+: "{}
+\item 
+\Hypertarget{shell_8c_a047ff2c29b5fd455a93f4058d5ef8369}\label{shell_8c_a047ff2c29b5fd455a93f4058d5ef8369} 
+const uint8\+\_\+t {\bfseries courant\+\_\+txt\+\_\+ma} \mbox{[}$\,$\mbox{]} = "{} m\+A"{}
+\item 
+\Hypertarget{shell_8c_af5812aa8b2bd99f491f020241eb4949e}\label{shell_8c_af5812aa8b2bd99f491f020241eb4949e} 
+const uint8\+\_\+t {\bfseries vitesse\+\_\+txt} \mbox{[}$\,$\mbox{]} = "{} tour/min"{}
+\item 
+\Hypertarget{shell_8c_a3d58817be6c13d5f73d7ade9aab88984}\label{shell_8c_a3d58817be6c13d5f73d7ade9aab88984} 
+const uint8\+\_\+t {\bfseries new\+Line} \mbox{[}$\,$\mbox{]} = "{}\textbackslash{}r\textbackslash{}n$>$$>$$>$"{}
+\item 
+\Hypertarget{shell_8c_a7f0a5a2e32844fe97f21c66477350506}\label{shell_8c_a7f0a5a2e32844fe97f21c66477350506} 
+int {\bfseries idx\+Cmd} = 0
+\item 
+\Hypertarget{shell_8c_a99c89de7e0aef38d558be346ad04cd11}\label{shell_8c_a99c89de7e0aef38d558be346ad04cd11} 
+char {\bfseries cmd} \mbox{[}CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]}
+\item 
+\Hypertarget{shell_8c_a7195b267befbb06c81c66e2f6693ec53}\label{shell_8c_a7195b267befbb06c81c66e2f6693ec53} 
+char {\bfseries buffer\+\_\+cmd} \mbox{[}1\mbox{]}
+\item 
+\Hypertarget{shell_8c_a474f4c274489d5191911df29d1eb1951}\label{shell_8c_a474f4c274489d5191911df29d1eb1951} 
+char {\bfseries vitesse\+\_\+str} \mbox{[}5\mbox{]}
+\item 
+\Hypertarget{shell_8c_a3a396b803c4e2fa2837cc9ac8b44f7fe}\label{shell_8c_a3a396b803c4e2fa2837cc9ac8b44f7fe} 
+char {\bfseries courant\+\_\+str} \mbox{[}5\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+création du shell qui va permettre d\textquotesingle{}entrer les consignes du moteur 
+
+\begin{DoxyAuthor}{Author}
+Colin L, Lucas G 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20 octobre 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shell_8c_a0354400539e9deb5ed062847a6db5106}\label{shell_8c_a0354400539e9deb5ed062847a6db5106} 
+\index{shell.c@{shell.c}!UART\_Echo@{UART\_Echo}}
+\index{UART\_Echo@{UART\_Echo}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{UART\_Echo()}{UART\_Echo()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Echo (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}afficher le caractère entré par l\textquotesingle{}utilisateur dans le shell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{shell_8c_a3369aa142a6ea1e89e677006836ee2ff}\label{shell_8c_a3369aa142a6ea1e89e677006836ee2ff} 
+\index{shell.c@{shell.c}!help@{help}}
+\index{help@{help}!shell.c@{shell.c}}
+\doxysubsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily const uint8\+\_\+t help\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{stringliteral}{"{}Liste\ des\ commandes\(\backslash\)r\(\backslash\)nhelp\ :\ donne\ la\ liste\ des\ commandes\(\backslash\)r\(\backslash\)npinout\ :\ donne\ la\ liste\ des\ broches\ connectées\(\backslash\)r\(\backslash\)nstart\ :\ allume\ le\ moteur\(\backslash\)r\(\backslash\)nstop\ :\ eteint\ le\ moteur\(\backslash\)r\(\backslash\)n"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}speed\ :\ modifie\ la\ vitesse\(\backslash\)r\(\backslash\)ncourant\ :\ affiche\ le\ courant\ en\ mA\(\backslash\)r\(\backslash\)nvitesse\ :\ affiche\ la\ vitesse\ du\ moteur"{}}}
+
+\end{DoxyCode}

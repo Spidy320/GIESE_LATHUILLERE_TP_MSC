@@ -1,0 +1,133 @@
+\doxysection{adc\+\_\+mes.\+c File Reference}
+\hypertarget{adc__mes_8c}{}\label{adc__mes_8c}\index{adc\_mes.c@{adc\_mes.c}}
+
+
+mesures du courant et de la vitesse  
+
+
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}adc\+\_\+mes.\+h"{}}\newline
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc__mes_8c_a327401b93f45443e51556bcb1bd7c7b7}\label{adc__mes_8c_a327401b93f45443e51556bcb1bd7c7b7} 
+\#define {\bfseries ADC\+\_\+\+BUFFER}~1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc__mes_8c_a5aa4e6458118db174005468303c289e1}{Adc\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialisation de l\textquotesingle{}ADC. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{adc__mes_8c_a09b316bc40428282b934be16ed1c71fb}{Mes\+\_\+\+Courant}} (void)
+\begin{DoxyCompactList}\small\item\em Mesure le courant et le convertit en mA. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{adc__mes_8c_a8f7e45efeb8c23b528926bf7b03dcf65}{Mesure\+\_\+\+Vitesse}} (void)
+\begin{DoxyCompactList}\small\item\em Mesure la vitesse de rotation du moteur et la convertit en tr/min. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{adc__mes_8c_a22b804736f5648d52f639b2647d4ed13}\label{adc__mes_8c_a22b804736f5648d52f639b2647d4ed13} 
+ADC\+\_\+\+Handle\+Type\+Def {\bfseries hadc1}
+\item 
+\Hypertarget{adc__mes_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{adc__mes_8c_aa9479c261d65eecedd3d9582f7f0f89c} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+\Hypertarget{adc__mes_8c_a25fc663547539bc49fecc0011bd76ab5}\label{adc__mes_8c_a25fc663547539bc49fecc0011bd76ab5} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim1}
+\item 
+\Hypertarget{adc__mes_8c_aac3d2c59ee0e3bbae1b99529a154eb62}\label{adc__mes_8c_aac3d2c59ee0e3bbae1b99529a154eb62} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim3}
+\item 
+\Hypertarget{adc__mes_8c_ae86c612c90d5925942689ce53f1ae7ab}\label{adc__mes_8c_ae86c612c90d5925942689ce53f1ae7ab} 
+int {\bfseries sens\+\_\+rotation}
+\item 
+\Hypertarget{adc__mes_8c_a0dbc5367ecdac8dc3e605c99333d9ad8}\label{adc__mes_8c_a0dbc5367ecdac8dc3e605c99333d9ad8} 
+const uint8\+\_\+t {\bfseries error\+\_\+calib} \mbox{[}$\,$\mbox{]} = "{}Can\textquotesingle{}t calibrate adc\textbackslash{}r\textbackslash{}n"{}
+\item 
+\Hypertarget{adc__mes_8c_aad93660a1794f28f3205b2659907c99d}\label{adc__mes_8c_aad93660a1794f28f3205b2659907c99d} 
+const uint8\+\_\+t {\bfseries error\+\_\+start} \mbox{[}$\,$\mbox{]} = "{}Can\textquotesingle{}t start adc\textbackslash{}r\textbackslash{}n"{}
+\item 
+\Hypertarget{adc__mes_8c_a054bc0852af05ea870d9c583b4de91ae}\label{adc__mes_8c_a054bc0852af05ea870d9c583b4de91ae} 
+uint32\+\_\+t {\bfseries courant\+\_\+mes}
+\item 
+\Hypertarget{adc__mes_8c_af90a5e754147168160d1b11432e56a88}\label{adc__mes_8c_af90a5e754147168160d1b11432e56a88} 
+uint32\+\_\+t {\bfseries val\+\_\+vitesse\+\_\+t0}
+\item 
+\Hypertarget{adc__mes_8c_af01328c68f2ab65730dc168f43ca788d}\label{adc__mes_8c_af01328c68f2ab65730dc168f43ca788d} 
+uint32\+\_\+t {\bfseries val\+\_\+vitesse\+\_\+t1}
+\item 
+\Hypertarget{adc__mes_8c_a806942924c41583c4b6eb5277bb6d976}\label{adc__mes_8c_a806942924c41583c4b6eb5277bb6d976} 
+int32\+\_\+t {\bfseries val\+\_\+vitesse}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+mesures du courant et de la vitesse 
+
+\begin{DoxyAuthor}{Author}
+Colin L, Lucas G 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20 octobre 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{adc__mes_8c_a5aa4e6458118db174005468303c289e1}\label{adc__mes_8c_a5aa4e6458118db174005468303c289e1} 
+\index{adc\_mes.c@{adc\_mes.c}!Adc\_init@{Adc\_init}}
+\index{Adc\_init@{Adc\_init}!adc\_mes.c@{adc\_mes.c}}
+\doxysubsubsection{\texorpdfstring{Adc\_init()}{Adc\_init()}}
+{\footnotesize\ttfamily void Adc\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation de l\textquotesingle{}ADC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{adc__mes_8c_a09b316bc40428282b934be16ed1c71fb}\label{adc__mes_8c_a09b316bc40428282b934be16ed1c71fb} 
+\index{adc\_mes.c@{adc\_mes.c}!Mes\_Courant@{Mes\_Courant}}
+\index{Mes\_Courant@{Mes\_Courant}!adc\_mes.c@{adc\_mes.c}}
+\doxysubsubsection{\texorpdfstring{Mes\_Courant()}{Mes\_Courant()}}
+{\footnotesize\ttfamily int32\+\_\+t Mes\+\_\+\+Courant (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mesure le courant et le convertit en mA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+courant\+\_\+mA la valeur du courant mesuré en mA 
+\end{DoxyReturn}
+\Hypertarget{adc__mes_8c_a8f7e45efeb8c23b528926bf7b03dcf65}\label{adc__mes_8c_a8f7e45efeb8c23b528926bf7b03dcf65} 
+\index{adc\_mes.c@{adc\_mes.c}!Mesure\_Vitesse@{Mesure\_Vitesse}}
+\index{Mesure\_Vitesse@{Mesure\_Vitesse}!adc\_mes.c@{adc\_mes.c}}
+\doxysubsubsection{\texorpdfstring{Mesure\_Vitesse()}{Mesure\_Vitesse()}}
+{\footnotesize\ttfamily int32\+\_\+t Mesure\+\_\+\+Vitesse (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Mesure la vitesse de rotation du moteur et la convertit en tr/min. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+val\+\_\+vitesse la valeur de la vitesse de rotation mesurée en tr/min 
+\end{DoxyReturn}

@@ -1,5 +1,5 @@
 /**
- * \file adc_mes.c
+ * \file motor.c
  * \brief gère la commande du moteur
  * \author Colin L, Lucas G
  * \version 1

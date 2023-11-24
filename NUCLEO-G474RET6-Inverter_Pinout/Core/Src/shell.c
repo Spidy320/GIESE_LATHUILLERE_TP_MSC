@@ -1,5 +1,5 @@
 /**
- * \file adc_mes.c
+ * \file shell.c
  * \brief création du shell qui va permettre d'entrer les consignes du moteur
  * \author Colin L, Lucas G
  * \version 1

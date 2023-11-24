@@ -1,0 +1,111 @@
+\doxysection{motor.\+c File Reference}
+\hypertarget{motor_8c}{}\label{motor_8c}\index{motor.c@{motor.c}}
+
+
+gère la commande du moteur  
+
+
+{\ttfamily \#include "{}motor.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}adc\+\_\+mes.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{motor_8c_a07f9e98140eb6e008858dd3af2fb58e2}{Change\+\_\+\+Speed}} (char cmd\mbox{[}CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a3015fbe03dc24072b86fa0ff6833944a}{Start\+\_\+\+Motor}} (char cmd\mbox{[}CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]})
+\begin{DoxyCompactList}\small\item\em Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a0837d1a10a6e290010190ec5104b650b}{Stop\+\_\+\+Motor}} (void)
+\begin{DoxyCompactList}\small\item\em stop les PWM et donc arrête le moteur \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{motor_8c_aa9479c261d65eecedd3d9582f7f0f89c} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+\Hypertarget{motor_8c_a25fc663547539bc49fecc0011bd76ab5}\label{motor_8c_a25fc663547539bc49fecc0011bd76ab5} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim1}
+\item 
+\Hypertarget{motor_8c_aaee6b8e286567d307b1548c45c83cfb2}\label{motor_8c_aaee6b8e286567d307b1548c45c83cfb2} 
+int {\bfseries speed\+\_\+buffer} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{motor_8c_a8d5a9baf136c6db58dfc7e80120839d1}\label{motor_8c_a8d5a9baf136c6db58dfc7e80120839d1} 
+const uint8\+\_\+t {\bfseries max\+Speed} \mbox{[}$\,$\mbox{]} = "{}Too fast ! \textquotesingle{}speed xxxx\textquotesingle{}"{}
+\item 
+\Hypertarget{motor_8c_a2a2cc0da58aef3a9590a664761f291d4}\label{motor_8c_a2a2cc0da58aef3a9590a664761f291d4} 
+const uint8\+\_\+t {\bfseries speed\+Changed\+Fin} \mbox{[}$\,$\mbox{]} = "{}Speed changed"{}
+\item 
+\Hypertarget{motor_8c_ae86c612c90d5925942689ce53f1ae7ab}\label{motor_8c_ae86c612c90d5925942689ce53f1ae7ab} 
+int {\bfseries sens\+\_\+rotation} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+gère la commande du moteur 
+
+\begin{DoxyAuthor}{Author}
+Colin L, Lucas G 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20 octobre 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{motor_8c_a07f9e98140eb6e008858dd3af2fb58e2}\label{motor_8c_a07f9e98140eb6e008858dd3af2fb58e2} 
+\index{motor.c@{motor.c}!Change\_Speed@{Change\_Speed}}
+\index{Change\_Speed@{Change\_Speed}!motor.c@{motor.c}}
+\doxysubsubsection{\texorpdfstring{Change\_Speed()}{Change\_Speed()}}
+{\footnotesize\ttfamily void Change\+\_\+\+Speed (\begin{DoxyParamCaption}\item[{char}]{cmd\mbox{[}\+CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd\mbox{[}\+CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]}} & buffer contenant la consigne du rapport cyclique \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_a3015fbe03dc24072b86fa0ff6833944a}\label{motor_8c_a3015fbe03dc24072b86fa0ff6833944a} 
+\index{motor.c@{motor.c}!Start\_Motor@{Start\_Motor}}
+\index{Start\_Motor@{Start\_Motor}!motor.c@{motor.c}}
+\doxysubsubsection{\texorpdfstring{Start\_Motor()}{Start\_Motor()}}
+{\footnotesize\ttfamily void Start\+\_\+\+Motor (\begin{DoxyParamCaption}\item[{char}]{cmd\mbox{[}\+CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd\mbox{[}\+CMD\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]}} & buffer contenant la consigne du rapport cyclique qui va être initialisée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_a0837d1a10a6e290010190ec5104b650b}\label{motor_8c_a0837d1a10a6e290010190ec5104b650b} 
+\index{motor.c@{motor.c}!Stop\_Motor@{Stop\_Motor}}
+\index{Stop\_Motor@{Stop\_Motor}!motor.c@{motor.c}}
+\doxysubsubsection{\texorpdfstring{Stop\_Motor()}{Stop\_Motor()}}
+{\footnotesize\ttfamily void Stop\+\_\+\+Motor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+stop les PWM et donc arrête le moteur 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
