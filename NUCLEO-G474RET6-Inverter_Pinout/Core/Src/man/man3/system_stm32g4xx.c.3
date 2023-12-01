@@ -1,0 +1,96 @@
+.TH "system_stm32g4xx.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+system_stm32g4xx.c \- CMSIS Cortex-M4 Device Peripheral Access Layer System Source File\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'stm32g4xx\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHSE_VALUE\fP   24000000U"
+.br
+.ti -1c
+.RI "#define \fBHSI_VALUE\fP   16000000U"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSystemInit\fP (void)"
+.br
+.RI "Setup the microcontroller system\&. "
+.ti -1c
+.RI "void \fBSystemCoreClockUpdate\fP (void)"
+.br
+.RI "Update SystemCoreClock variable according to Clock Register Values\&. The SystemCoreClock variable contains the core clock (HCLK), it can be used by the user application to setup the SysTick timer or configure other parameters\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "uint32_t \fBSystemCoreClock\fP = \fBHSI_VALUE\fP"
+.br
+.ti -1c
+.RI "const uint8_t \fBAHBPrescTable\fP [16] = {0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U, 6U, 7U, 8U, 9U}"
+.br
+.ti -1c
+.RI "const uint8_t \fBAPBPrescTable\fP [8] = {0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U}"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+CMSIS Cortex-M4 Device Peripheral Access Layer System Source File\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+MCD Application Team 
+.RE
+.PP
+This file provides two functions and one global variable to be called from user application:
+.IP "\(bu" 2
+\fBSystemInit()\fP: This function is called at startup just after reset and before branch to main program\&. This call is made inside the 'startup_stm32g4xx\&.s' file\&.
+.IP "\(bu" 2
+SystemCoreClock variable: Contains the core clock (HCLK), it can be used by the user application to setup the SysTick timer or configure other parameters\&.
+.IP "\(bu" 2
+\fBSystemCoreClockUpdate()\fP: Updates the variable SystemCoreClock and must be called whenever the core clock is changed during program execution\&.
+.PP
+.PP
+After each device reset the HSI (16 MHz) is used as system clock source\&. Then \fBSystemInit()\fP function is called, in 'startup_stm32g4xx\&.s' file, to configure the system clock before to branch to main program\&.
+.SH "This file configures the system clock as follows:"
+.PP
+.PP
+ 
+.SS "System Clock source                    | HSI"
+.SS "SYSCLK(Hz)                             | 16000000"
+.SS "HCLK(Hz)                               | 16000000"
+.SS "AHB Prescaler                          | 1"
+.SS "APB1 Prescaler                         | 1"
+.SS "APB2 Prescaler                         | 1"
+.SS "PLL_M                                  | 1"
+.SS "PLL_N                                  | 16"
+.SS "PLL_P                                  | 7"
+.SS "PLL_Q                                  | 2"
+.SS "PLL_R                                  | 2"
+.SS "Require 48MHz for RNG                  | Disabled"
+=============================================================================
+.PP
+\fBAttention\fP
+.RS 4
+.RE
+.PP
+Copyright (c) 2019 STMicroelectronics\&. All rights reserved\&.
+.PP
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component\&. If no LICENSE file comes with this software, it is provided AS-IS\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

@@ -1,0 +1,208 @@
+.TH "main.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.c \- : Main program body  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'adc\&.h'\fP
+.br
+\fC#include 'dma\&.h'\fP
+.br
+\fC#include 'tim\&.h'\fP
+.br
+\fC#include 'usart\&.h'\fP
+.br
+\fC#include 'gpio\&.h'\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'shell\&.h'\fP
+.br
+\fC#include 'motor\&.h'\fP
+.br
+\fC#include 'adc_mes\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSystemClock_Config\fP (void)"
+.br
+.RI "System Clock Configuration\&. "
+.ti -1c
+.RI "void \fBHAL_UART_RxCpltCallback\fP (UART_HandleTypeDef *huart)"
+.br
+.RI "Attend qu'un caractère soit entré par l'utilisateur et renvoie vers la fonction d'echo dans la boucle du main\&. "
+.ti -1c
+.RI "void \fBHAL_ADC_ConvCpltCallback\fP (ADC_HandleTypeDef *hadc)"
+.br
+.RI "Fonction d'asservissement du courant\&. "
+.ti -1c
+.RI "int \fBmain\fP (void)"
+.br
+.RI "The application entry point\&. "
+.ti -1c
+.RI "void \fBHAL_TIM_PeriodElapsedCallback\fP (TIM_HandleTypeDef *htim)"
+.br
+.RI "Period elapsed callback in non blocking mode\&. "
+.ti -1c
+.RI "void \fBError_Handler\fP (void)"
+.br
+.RI "This function is executed in case of error occurrence\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBit_uart\fP = 0"
+.br
+.ti -1c
+.RI "char \fBbuffer_cmd\fP []"
+.br
+.ti -1c
+.RI "uint8_t \fBstarted\fP []"
+.br
+.ti -1c
+.RI "uint8_t \fBnewLine\fP []"
+.br
+.ti -1c
+.RI "uint32_t \fBuartRxReceived\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBuartRxBuffer\fP [UART_RX_BUFFER_SIZE]"
+.br
+.ti -1c
+.RI "uint8_t \fBuartTxBuffer\fP [UART_TX_BUFFER_SIZE]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+: Main program body 
+
+fichier principal
+.PP
+\fBAttention\fP
+.RS 4
+.RE
+.PP
+Copyright (c) 2023 STMicroelectronics\&. All rights reserved\&.
+.PP
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component\&. If no LICENSE file comes with this software, it is provided AS-IS\&.
+.PP
+\fBAuthor\fP
+.RS 4
+Colin L, Lucas G 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+20 octobre 2023 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void Error_Handler (void)"
+
+.PP
+This function is executed in case of error occurrence\&. 
+.PP
+\fBReturn values\fP
+.RS 4
+\fINone\fP 
+.RE
+.PP
+
+.SS "void HAL_ADC_ConvCpltCallback (ADC_HandleTypeDef * hadc)"
+
+.PP
+Fonction d'asservissement du courant\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI*adc\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim)"
+
+.PP
+Period elapsed callback in non blocking mode\&. 
+.PP
+\fBNote\fP
+.RS 4
+This function is called when TIM6 interrupt took place, inside HAL_TIM_IRQHandler()\&. It makes a direct call to HAL_IncTick() to increment a global variable 'uwTick' used as application time base\&. 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIhtim\fP : TIM handle 
+.RE
+.PP
+\fBReturn values\fP
+.RS 4
+\fINone\fP 
+.RE
+.PP
+
+.SS "void HAL_UART_RxCpltCallback (UART_HandleTypeDef * huart)"
+
+.PP
+Attend qu'un caractère soit entré par l'utilisateur et renvoie vers la fonction d'echo dans la boucle du main\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI*huart\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "int main (void)"
+
+.PP
+The application entry point\&. 
+.PP
+\fBReturn values\fP
+.RS 4
+\fIint\fP 
+.RE
+.PP
+
+.SS "void SystemClock_Config (void)"
+
+.PP
+System Clock Configuration\&. 
+.PP
+\fBReturn values\fP
+.RS 4
+\fINone\fP 
+.RE
+.PP
+Configure the main internal regulator output voltage
+.PP
+Initializes the RCC Oscillators according to the specified parameters in the RCC_OscInitTypeDef structure\&.
+.PP
+Initializes the CPU, AHB and APB buses clocks
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_shell_8c" xml:lang="en-US">
+<title>shell.c File Reference</title>
+<indexterm><primary>shell.c</primary></indexterm>
+<para>
+
+<para>création du shell qui va permettre d&apos;entrer les consignes du moteur </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;shell.h&quot;<?linebreak?>#include &quot;main.h&quot;<?linebreak?>#include &quot;motor.h&quot;<?linebreak?>#include &quot;adc_mes.h&quot;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_shell_8c_1a6b491d67b6c4e947c244ab3225c2b646"/>char * <emphasis role="strong">UART_Create_Cmd</emphasis> (char *UART_Create_Cmd(void))</para>
+</listitem>
+            <listitem><para>void <link linkend="_shell_8c_1a0354400539e9deb5ed062847a6db5106">UART_Echo</link> (void)</para>
+
+<para>Permet d&apos;afficher le caractère entré par l&apos;utilisateur dans le shell. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_shell_8c_1aa9479c261d65eecedd3d9582f7f0f89c"/>UART_HandleTypeDef <emphasis role="strong">huart2</emphasis></para>
+</listitem>
+            <listitem><para>const uint8_t <link linkend="_shell_8c_1a3369aa142a6ea1e89e677006836ee2ff">help</link> []</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1ac88f7e9fb5c08068a71fdf0108918291"/>const uint8_t <emphasis role="strong">pinout</emphasis> [] = &quot;PA8 : U\t\tPB13 : U_barre\r\nPA9 : V\t\tPB14 : V_barre\r\nBus_Imes : PC2 (mesure du courant)\r\nEncoder a : PA6\tEncoder b : PA4 (mesure de la vitesse)&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1aaf2189933bda013fb3c72e886dc5a3d2"/>const uint8_t <emphasis role="strong">powerOn</emphasis> [] = &quot;Powering on the motor&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1aeb39f657e7d4109c7d352e6ad376228a"/>const uint8_t <emphasis role="strong">powerOff</emphasis> [] = &quot;Shutting down the motor&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a1fd64585fe171b58dc00e267ef1efd0f"/>const uint8_t <emphasis role="strong">speedChanged</emphasis> [] = &quot;Changing speed&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1afffb9f0c7259f40748797ec408c8becb"/>const uint8_t <emphasis role="strong">cmdNotFound</emphasis> [] = &quot;Command not found&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a755cb53f91881bf4852a1765ffc09dd6"/>const uint8_t <emphasis role="strong">started</emphasis> [] = &quot;Bienvenue dans ce super shell !&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1ac90a286907360b1533f8d2a2a994af7e"/>const uint8_t <emphasis role="strong">courant</emphasis> [] = &quot;Courant : &quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a047ff2c29b5fd455a93f4058d5ef8369"/>const uint8_t <emphasis role="strong">courant_txt_ma</emphasis> [] = &quot; mA&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1af5812aa8b2bd99f491f020241eb4949e"/>const uint8_t <emphasis role="strong">vitesse_txt</emphasis> [] = &quot; tour/min&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a3d58817be6c13d5f73d7ade9aab88984"/>const uint8_t <emphasis role="strong">newLine</emphasis> [] = &quot;\r\n&gt;&gt;&gt;&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a7f0a5a2e32844fe97f21c66477350506"/>int <emphasis role="strong">idxCmd</emphasis> = 0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a99c89de7e0aef38d558be346ad04cd11"/>char <emphasis role="strong">cmd</emphasis> [CMD_BUFFER_SIZE]</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a7195b267befbb06c81c66e2f6693ec53"/>char <emphasis role="strong">buffer_cmd</emphasis> [1]</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a474f4c274489d5191911df29d1eb1951"/>char <emphasis role="strong">vitesse_str</emphasis> [5]</para>
+</listitem>
+            <listitem><para><anchor xml:id="_shell_8c_1a3a396b803c4e2fa2837cc9ac8b44f7fe"/>char <emphasis role="strong">courant_str</emphasis> [5]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>création du shell qui va permettre d&apos;entrer les consignes du moteur </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Colin L, Lucas G </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>20 octobre 2023 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_shell_8c_1a0354400539e9deb5ed062847a6db5106"/><section>
+    <title>UART_Echo()</title>
+<indexterm><primary>UART_Echo</primary><secondary>shell.c</secondary></indexterm>
+<indexterm><primary>shell.c</primary><secondary>UART_Echo</secondary></indexterm>
+<para><computeroutput>void UART_Echo (void )</computeroutput></para><para>
+
+<para>Permet d&apos;afficher le caractère entré par l&apos;utilisateur dans le shell. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>void</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void </para>
+</formalpara>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_shell_8c_1a3369aa142a6ea1e89e677006836ee2ff"/><section>
+    <title>help</title>
+<indexterm><primary>help</primary><secondary>shell.c</secondary></indexterm>
+<indexterm><primary>shell.c</primary><secondary>help</secondary></indexterm>
+<para><computeroutput>const uint8_t help[]</computeroutput></para><emphasis role="strong">Initial value:</emphasis><programlisting linenumbering="unnumbered">=&#32;<emphasis role="stringliteral">&quot;Liste&#32;des&#32;commandes\r\nhelp&#32;:&#32;donne&#32;la&#32;liste&#32;des&#32;commandes\r\npinout&#32;:&#32;donne&#32;la&#32;liste&#32;des&#32;broches&#32;connectées\r\nstart&#32;:&#32;allume&#32;le&#32;moteur\r\nstop&#32;:&#32;eteint&#32;le&#32;moteur\r\n&quot;</emphasis>
+&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="stringliteral">&quot;speed&#32;:&#32;modifie&#32;la&#32;vitesse\r\ncourant&#32;:&#32;affiche&#32;le&#32;courant&#32;en&#32;mA\r\nvitesse&#32;:&#32;affiche&#32;la&#32;vitesse&#32;du&#32;moteur&quot;</emphasis>
+</programlisting></section>
+</section>
+</section>

@@ -1,0 +1,72 @@
+.TH "tim.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tim.c \- This file provides code for the configuration of the TIM instances\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'tim\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMX_TIM1_Init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBMX_TIM3_Init\fP (void)"
+.br
+.ti -1c
+.RI "void \fBHAL_TIM_PWM_MspInit\fP (TIM_HandleTypeDef *tim_pwmHandle)"
+.br
+.ti -1c
+.RI "void \fBHAL_TIM_Encoder_MspInit\fP (TIM_HandleTypeDef *tim_encoderHandle)"
+.br
+.ti -1c
+.RI "void \fBHAL_TIM_MspPostInit\fP (TIM_HandleTypeDef *timHandle)"
+.br
+.ti -1c
+.RI "void \fBHAL_TIM_PWM_MspDeInit\fP (TIM_HandleTypeDef *tim_pwmHandle)"
+.br
+.ti -1c
+.RI "void \fBHAL_TIM_Encoder_MspDeInit\fP (TIM_HandleTypeDef *tim_encoderHandle)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "TIM_HandleTypeDef \fBhtim1\fP"
+.br
+.ti -1c
+.RI "TIM_HandleTypeDef \fBhtim3\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This file provides code for the configuration of the TIM instances\&. 
+
+
+.PP
+\fBAttention\fP
+.RS 4
+
+.RE
+.PP
+Copyright (c) 2023 STMicroelectronics\&. All rights reserved\&.
+.PP
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component\&. If no LICENSE file comes with this software, it is provided AS-IS\&. 
+.SH "Function Documentation"
+.PP 
+.SS "void HAL_TIM_Encoder_MspDeInit (TIM_HandleTypeDef * tim_encoderHandle)"
+TIM3 GPIO Configuration PA4 ------> TIM3_CH2 PA6 ------> TIM3_CH1 PC8 ------> TIM3_CH3
+.SS "void HAL_TIM_Encoder_MspInit (TIM_HandleTypeDef * tim_encoderHandle)"
+TIM3 GPIO Configuration PA4 ------> TIM3_CH2 PA6 ------> TIM3_CH1 PC8 ------> TIM3_CH3
+.SS "void HAL_TIM_MspPostInit (TIM_HandleTypeDef * timHandle)"
+TIM1 GPIO Configuration PB13 ------> TIM1_CH1N PB14 ------> TIM1_CH2N PB15 ------> TIM1_CH3N PA8 ------> TIM1_CH1 PA9 ------> TIM1_CH2 PA10 ------> TIM1_CH3
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

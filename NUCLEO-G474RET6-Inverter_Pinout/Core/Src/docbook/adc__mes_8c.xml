@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_adc__mes_8c" xml:lang="en-US">
+<title>adc_mes.c File Reference</title>
+<indexterm><primary>adc_mes.c</primary></indexterm>
+<para>
+
+<para>mesures du courant et de la vitesse </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;main.h&quot;<?linebreak?>#include &quot;adc_mes.h&quot;<?linebreak?>#include &quot;adc.h&quot;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a327401b93f45443e51556bcb1bd7c7b7"/>#define <emphasis role="strong">ADC_BUFFER</emphasis>&#160;&#160;&#160;1</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_adc__mes_8c_1a5aa4e6458118db174005468303c289e1">Adc_init</link> (void)</para>
+
+<para>Initialisation de l&apos;ADC. </para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb">Mes_Courant</link> (void)</para>
+
+<para>Mesure le courant et le convertit en mA. </para>
+</listitem>
+            <listitem><para>int32_t <link linkend="_adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65">Mesure_Vitesse</link> (void)</para>
+
+<para>Mesure la vitesse de rotation du moteur et la convertit en tr/min. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a22b804736f5648d52f639b2647d4ed13"/>ADC_HandleTypeDef <emphasis role="strong">hadc1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1aa9479c261d65eecedd3d9582f7f0f89c"/>UART_HandleTypeDef <emphasis role="strong">huart2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a25fc663547539bc49fecc0011bd76ab5"/>TIM_HandleTypeDef <emphasis role="strong">htim1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1aac3d2c59ee0e3bbae1b99529a154eb62"/>TIM_HandleTypeDef <emphasis role="strong">htim3</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1ae86c612c90d5925942689ce53f1ae7ab"/>int <emphasis role="strong">sens_rotation</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a0dbc5367ecdac8dc3e605c99333d9ad8"/>const uint8_t <emphasis role="strong">error_calib</emphasis> [] = &quot;Can&apos;t calibrate adc\r\n&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1aad93660a1794f28f3205b2659907c99d"/>const uint8_t <emphasis role="strong">error_start</emphasis> [] = &quot;Can&apos;t start adc\r\n&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a054bc0852af05ea870d9c583b4de91ae"/>uint32_t <emphasis role="strong">courant_mes</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1af90a5e754147168160d1b11432e56a88"/>uint32_t <emphasis role="strong">val_vitesse_t0</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1af01328c68f2ab65730dc168f43ca788d"/>uint32_t <emphasis role="strong">val_vitesse_t1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc__mes_8c_1a806942924c41583c4b6eb5277bb6d976"/>int32_t <emphasis role="strong">val_vitesse</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>mesures du courant et de la vitesse </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Colin L, Lucas G </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>20 octobre 2023 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_adc__mes_8c_1a5aa4e6458118db174005468303c289e1"/><section>
+    <title>Adc_init()</title>
+<indexterm><primary>Adc_init</primary><secondary>adc_mes.c</secondary></indexterm>
+<indexterm><primary>adc_mes.c</primary><secondary>Adc_init</secondary></indexterm>
+<para><computeroutput>void Adc_init (void )</computeroutput></para><para>
+
+<para>Initialisation de l&apos;ADC. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>void</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb"/><section>
+    <title>Mes_Courant()</title>
+<indexterm><primary>Mes_Courant</primary><secondary>adc_mes.c</secondary></indexterm>
+<indexterm><primary>adc_mes.c</primary><secondary>Mes_Courant</secondary></indexterm>
+<para><computeroutput>int32_t Mes_Courant (void )</computeroutput></para><para>
+
+<para>Mesure le courant et le convertit en mA. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>void</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>courant_mA la valeur du courant mesuré en mA </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65"/><section>
+    <title>Mesure_Vitesse()</title>
+<indexterm><primary>Mesure_Vitesse</primary><secondary>adc_mes.c</secondary></indexterm>
+<indexterm><primary>adc_mes.c</primary><secondary>Mesure_Vitesse</secondary></indexterm>
+<para><computeroutput>int32_t Mesure_Vitesse (void )</computeroutput></para><para>
+
+<para>Mesure la vitesse de rotation du moteur et la convertit en tr/min. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>void</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>val_vitesse la valeur de la vitesse de rotation mesurée en tr/min </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

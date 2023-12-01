@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="adc_8c" kind="file"><name>adc.c</name>
+    <member refid="adc_8c_1a22b804736f5648d52f639b2647d4ed13" kind="variable"><name>hadc1</name></member>
+    <member refid="adc_8c_1acd9221f1aa19aebfe0b744947f2daf49" kind="variable"><name>hadc2</name></member>
+    <member refid="adc_8c_1a1c126854bb1813d31ab4776b21dcc51f" kind="variable"><name>hdma_adc1</name></member>
+    <member refid="adc_8c_1aa80765d6a2be18aab6d9f93c12bc9cd8" kind="variable"><name>HAL_RCC_ADC12_CLK_ENABLED</name></member>
+    <member refid="adc_8c_1acccd58aa70215a6b184ad242312ffd0c" kind="function"><name>MX_ADC1_Init</name></member>
+    <member refid="adc_8c_1a101e2e3433dfe72bbbd0ae3a84489263" kind="function"><name>MX_ADC2_Init</name></member>
+    <member refid="adc_8c_1ac3139540667c403c5dfd37a99c610b1c" kind="function"><name>HAL_ADC_MspInit</name></member>
+    <member refid="adc_8c_1a3f61f2c2af0f122f81a87af8ad7b4360" kind="function"><name>HAL_ADC_MspDeInit</name></member>
+  </compound>
+  <compound refid="adc__mes_8c" kind="file"><name>adc_mes.c</name>
+    <member refid="adc__mes_8c_1a327401b93f45443e51556bcb1bd7c7b7" kind="define"><name>ADC_BUFFER</name></member>
+    <member refid="adc__mes_8c_1a22b804736f5648d52f639b2647d4ed13" kind="variable"><name>hadc1</name></member>
+    <member refid="adc__mes_8c_1aa9479c261d65eecedd3d9582f7f0f89c" kind="variable"><name>huart2</name></member>
+    <member refid="adc__mes_8c_1a25fc663547539bc49fecc0011bd76ab5" kind="variable"><name>htim1</name></member>
+    <member refid="adc__mes_8c_1aac3d2c59ee0e3bbae1b99529a154eb62" kind="variable"><name>htim3</name></member>
+    <member refid="adc__mes_8c_1ae86c612c90d5925942689ce53f1ae7ab" kind="variable"><name>sens_rotation</name></member>
+    <member refid="adc__mes_8c_1a0dbc5367ecdac8dc3e605c99333d9ad8" kind="variable"><name>error_calib</name></member>
+    <member refid="adc__mes_8c_1aad93660a1794f28f3205b2659907c99d" kind="variable"><name>error_start</name></member>
+    <member refid="adc__mes_8c_1a054bc0852af05ea870d9c583b4de91ae" kind="variable"><name>courant_mes</name></member>
+    <member refid="adc__mes_8c_1af90a5e754147168160d1b11432e56a88" kind="variable"><name>val_vitesse_t0</name></member>
+    <member refid="adc__mes_8c_1af01328c68f2ab65730dc168f43ca788d" kind="variable"><name>val_vitesse_t1</name></member>
+    <member refid="adc__mes_8c_1a806942924c41583c4b6eb5277bb6d976" kind="variable"><name>val_vitesse</name></member>
+    <member refid="adc__mes_8c_1a5aa4e6458118db174005468303c289e1" kind="function"><name>Adc_init</name></member>
+    <member refid="adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb" kind="function"><name>Mes_Courant</name></member>
+    <member refid="adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65" kind="function"><name>Mesure_Vitesse</name></member>
+  </compound>
+  <compound refid="dma_8c" kind="file"><name>dma.c</name>
+    <member refid="dma_8c_1a323249dac769f9855c10b4ec9446b707" kind="function"><name>MX_DMA_Init</name></member>
+  </compound>
+  <compound refid="gpio_8c" kind="file"><name>gpio.c</name>
+    <member refid="gpio_8c_1ac724e431d2af879252de35615be2bdea" kind="function"><name>MX_GPIO_Init</name></member>
+  </compound>
+  <compound refid="main_8c" kind="file"><name>main.c</name>
+    <member refid="main_8c_1a10158992c73de54456624900c3731cf4" kind="variable"><name>it_uart</name></member>
+    <member refid="main_8c_1a7e4b14e04a89c00de4fc2a02a6198e8c" kind="variable"><name>buffer_cmd</name></member>
+    <member refid="main_8c_1a835573497a60b314a9bf5a6fcac9602a" kind="variable"><name>started</name></member>
+    <member refid="main_8c_1a5e8351883e4e4ebcb0b67e6e5cbe2f79" kind="variable"><name>newLine</name></member>
+    <member refid="main_8c_1a9d8a518124b90c249458a5b30ab36c52" kind="variable"><name>uartRxReceived</name></member>
+    <member refid="main_8c_1a2542ac6d4440b9e1c4a6435c55c79df3" kind="variable"><name>uartRxBuffer</name></member>
+    <member refid="main_8c_1a3f98e2db2fa0d8f0cfd87b887576207f" kind="variable"><name>uartTxBuffer</name></member>
+    <member refid="main_8c_1a70af21c671abfcc773614a9a4f63d920" kind="function"><name>SystemClock_Config</name></member>
+    <member refid="main_8c_1ae494a9643f29b87d6d81e5264e60e57b" kind="function"><name>HAL_UART_RxCpltCallback</name></member>
+    <member refid="main_8c_1af20a88180db1113be1e89266917d148b" kind="function"><name>HAL_ADC_ConvCpltCallback</name></member>
+    <member refid="main_8c_1a840291bc02cba5474a4cb46a9b9566fe" kind="function"><name>main</name></member>
+    <member refid="main_8c_1a8a3b0ad512a6e6c6157440b68d395eac" kind="function"><name>HAL_TIM_PeriodElapsedCallback</name></member>
+    <member refid="main_8c_1a1730ffe1e560465665eb47d9264826f9" kind="function"><name>Error_Handler</name></member>
+  </compound>
+  <compound refid="motor_8c" kind="file"><name>motor.c</name>
+    <member refid="motor_8c_1aa9479c261d65eecedd3d9582f7f0f89c" kind="variable"><name>huart2</name></member>
+    <member refid="motor_8c_1a25fc663547539bc49fecc0011bd76ab5" kind="variable"><name>htim1</name></member>
+    <member refid="motor_8c_1aaee6b8e286567d307b1548c45c83cfb2" kind="variable"><name>speed_buffer</name></member>
+    <member refid="motor_8c_1a8d5a9baf136c6db58dfc7e80120839d1" kind="variable"><name>maxSpeed</name></member>
+    <member refid="motor_8c_1a2a2cc0da58aef3a9590a664761f291d4" kind="variable"><name>speedChangedFin</name></member>
+    <member refid="motor_8c_1ae86c612c90d5925942689ce53f1ae7ab" kind="variable"><name>sens_rotation</name></member>
+    <member refid="motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2" kind="function"><name>Change_Speed</name></member>
+    <member refid="motor_8c_1a3015fbe03dc24072b86fa0ff6833944a" kind="function"><name>Start_Motor</name></member>
+    <member refid="motor_8c_1a0837d1a10a6e290010190ec5104b650b" kind="function"><name>Stop_Motor</name></member>
+  </compound>
+  <compound refid="shell_8c" kind="file"><name>shell.c</name>
+    <member refid="shell_8c_1aa9479c261d65eecedd3d9582f7f0f89c" kind="variable"><name>huart2</name></member>
+    <member refid="shell_8c_1a3369aa142a6ea1e89e677006836ee2ff" kind="variable"><name>help</name></member>
+    <member refid="shell_8c_1ac88f7e9fb5c08068a71fdf0108918291" kind="variable"><name>pinout</name></member>
+    <member refid="shell_8c_1aaf2189933bda013fb3c72e886dc5a3d2" kind="variable"><name>powerOn</name></member>
+    <member refid="shell_8c_1aeb39f657e7d4109c7d352e6ad376228a" kind="variable"><name>powerOff</name></member>
+    <member refid="shell_8c_1a1fd64585fe171b58dc00e267ef1efd0f" kind="variable"><name>speedChanged</name></member>
+    <member refid="shell_8c_1afffb9f0c7259f40748797ec408c8becb" kind="variable"><name>cmdNotFound</name></member>
+    <member refid="shell_8c_1a755cb53f91881bf4852a1765ffc09dd6" kind="variable"><name>started</name></member>
+    <member refid="shell_8c_1ac90a286907360b1533f8d2a2a994af7e" kind="variable"><name>courant</name></member>
+    <member refid="shell_8c_1a047ff2c29b5fd455a93f4058d5ef8369" kind="variable"><name>courant_txt_ma</name></member>
+    <member refid="shell_8c_1af5812aa8b2bd99f491f020241eb4949e" kind="variable"><name>vitesse_txt</name></member>
+    <member refid="shell_8c_1a3d58817be6c13d5f73d7ade9aab88984" kind="variable"><name>newLine</name></member>
+    <member refid="shell_8c_1a7f0a5a2e32844fe97f21c66477350506" kind="variable"><name>idxCmd</name></member>
+    <member refid="shell_8c_1a99c89de7e0aef38d558be346ad04cd11" kind="variable"><name>cmd</name></member>
+    <member refid="shell_8c_1a7195b267befbb06c81c66e2f6693ec53" kind="variable"><name>buffer_cmd</name></member>
+    <member refid="shell_8c_1a474f4c274489d5191911df29d1eb1951" kind="variable"><name>vitesse_str</name></member>
+    <member refid="shell_8c_1a3a396b803c4e2fa2837cc9ac8b44f7fe" kind="variable"><name>courant_str</name></member>
+    <member refid="shell_8c_1a6b491d67b6c4e947c244ab3225c2b646" kind="function"><name>UART_Create_Cmd</name></member>
+    <member refid="shell_8c_1a0354400539e9deb5ed062847a6db5106" kind="function"><name>UART_Echo</name></member>
+  </compound>
+  <compound refid="stm32g4xx__hal__msp_8c" kind="file"><name>stm32g4xx_hal_msp.c</name>
+    <member refid="stm32g4xx__hal__msp_8c_1ae4fb8e66865c87d0ebab74a726a6891f" kind="function"><name>HAL_MspInit</name></member>
+  </compound>
+  <compound refid="stm32g4xx__hal__timebase__tim_8c" kind="file"><name>stm32g4xx_hal_timebase_tim.c</name>
+    <member refid="stm32g4xx__hal__timebase__tim_8c_1a1564492831a79fa18466467c3420c3c3" kind="variable"><name>htim6</name></member>
+    <member refid="stm32g4xx__hal__timebase__tim_8c_1a879cdb21ef051eb81ec51c18147397d5" kind="function"><name>HAL_InitTick</name></member>
+    <member refid="stm32g4xx__hal__timebase__tim_8c_1aaf651af2afe688a991c657f64f8fa5f9" kind="function"><name>HAL_SuspendTick</name></member>
+    <member refid="stm32g4xx__hal__timebase__tim_8c_1a24e0ee9dae1ec0f9d19200f5575ff790" kind="function"><name>HAL_ResumeTick</name></member>
+  </compound>
+  <compound refid="stm32g4xx__it_8c" kind="file"><name>stm32g4xx_it.c</name>
+    <member refid="stm32g4xx__it_8c_1a1c126854bb1813d31ab4776b21dcc51f" kind="variable"><name>hdma_adc1</name></member>
+    <member refid="stm32g4xx__it_8c_1aa9479c261d65eecedd3d9582f7f0f89c" kind="variable"><name>huart2</name></member>
+    <member refid="stm32g4xx__it_8c_1a1564492831a79fa18466467c3420c3c3" kind="variable"><name>htim6</name></member>
+    <member refid="stm32g4xx__it_8c_1a6ad7a5e3ee69cb6db6a6b9111ba898bc" kind="function"><name>NMI_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a2bffc10d5bd4106753b7c30e86903bea" kind="function"><name>HardFault_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a3150f74512510287a942624aa9b44cc5" kind="function"><name>MemManage_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a850cefb17a977292ae5eb4cafa9976c3" kind="function"><name>BusFault_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a1d98923de2ed6b7309b66f9ba2971647" kind="function"><name>UsageFault_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a3e5ddb3df0d62f2dc357e64a3f04a6ce" kind="function"><name>SVC_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1adbdfb05858cc36fc520974df37ec3cb0" kind="function"><name>DebugMon_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a6303e1f258cbdc1f970ce579cc015623" kind="function"><name>PendSV_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1ab5e09814056d617c521549e542639b7e" kind="function"><name>SysTick_Handler</name></member>
+    <member refid="stm32g4xx__it_8c_1a7b6fac3d670a4860ebec8a961d5c4a73" kind="function"><name>DMA1_Channel1_IRQHandler</name></member>
+    <member refid="stm32g4xx__it_8c_1a0ca6fd0e6f77921dd1123539857ba0a8" kind="function"><name>USART2_IRQHandler</name></member>
+    <member refid="stm32g4xx__it_8c_1a738473a5b43f6c92b80ce1d3d6f77ed9" kind="function"><name>EXTI15_10_IRQHandler</name></member>
+    <member refid="stm32g4xx__it_8c_1a0839a45f331c4c067939b9c4533bbf4d" kind="function"><name>TIM6_DAC_IRQHandler</name></member>
+  </compound>
+  <compound refid="syscalls_8c" kind="file"><name>syscalls.c</name>
+    <member refid="syscalls_8c_1aa006daaf11f1e2e45a6ababaf463212b" kind="variable"><name>environ</name></member>
+    <member refid="syscalls_8c_1aa53ed4b191897a1bfc205aa1da005d24" kind="function"><name>__io_putchar</name></member>
+    <member refid="syscalls_8c_1ad0122671640a3af49792ddaa59e8294e" kind="function"><name>__io_getchar</name></member>
+    <member refid="syscalls_8c_1a25c7f100d498300fff65568c2fcfe639" kind="function"><name>initialise_monitor_handles</name></member>
+    <member refid="syscalls_8c_1a945e539df8e0f66d3c73c533fe1968ee" kind="function"><name>_getpid</name></member>
+    <member refid="syscalls_8c_1a062a5101199c3128edd5170f2575bb10" kind="function"><name>_kill</name></member>
+    <member refid="syscalls_8c_1abc96bd69b58b2deaddb484478d911c1b" kind="function"><name>_exit</name></member>
+    <member refid="syscalls_8c_1af9aace1b44b73111e15aa39f06f43456" kind="function"><name>__attribute__</name></member>
+    <member refid="syscalls_8c_1a5aab5e2acfd600e3667dc915a2bbc7cb" kind="function"><name>_close</name></member>
+    <member refid="syscalls_8c_1a41eef54307912a82d20e71c3d47315aa" kind="function"><name>_fstat</name></member>
+    <member refid="syscalls_8c_1ad3134a3dc296622b8d1c5456e481505b" kind="function"><name>_isatty</name></member>
+    <member refid="syscalls_8c_1a7a61311bdf1cb025fc07dc2bdae22ce4" kind="function"><name>_lseek</name></member>
+    <member refid="syscalls_8c_1a270c9113047edd8d64186710ad76062b" kind="function"><name>_open</name></member>
+    <member refid="syscalls_8c_1aeef0c3372d04caa1bcc99fed2ab6ec72" kind="function"><name>_wait</name></member>
+    <member refid="syscalls_8c_1a70b2f211d665cded5637065aa2bb89dc" kind="function"><name>_unlink</name></member>
+    <member refid="syscalls_8c_1aaf727ebf57cd64d6c58b23e6ee4a4a69" kind="function"><name>_times</name></member>
+    <member refid="syscalls_8c_1a4711e961db985ed2c850a8be6597af50" kind="function"><name>_stat</name></member>
+    <member refid="syscalls_8c_1a31da4cd5328defa76a9e2246992aba12" kind="function"><name>_link</name></member>
+    <member refid="syscalls_8c_1a6cb6331c9d166180903d5fb78b9c9dd7" kind="function"><name>_fork</name></member>
+    <member refid="syscalls_8c_1ad2a07db8fdf26151eb98ba5711fad8c5" kind="function"><name>_execve</name></member>
+  </compound>
+  <compound refid="sysmem_8c" kind="file"><name>sysmem.c</name>
+    <member refid="sysmem_8c_1a2cf862d604e9c7cfcf0528a0f539a6a5" kind="variable"><name>__sbrk_heap_end</name></member>
+    <member refid="sysmem_8c_1a68125648bcce70b6bb3aa0be50e99700" kind="function"><name>_sbrk</name></member>
+  </compound>
+  <compound refid="system__stm32g4xx_8c" kind="file"><name>system_stm32g4xx.c</name>
+    <member refid="group___s_t_m32_g4xx___system___private___includes_1gaeafcff4f57440c60e64812dddd13e7cb" kind="define"><name>HSE_VALUE</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___includes_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kind="define"><name>HSI_VALUE</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6" kind="variable"><name>SystemCoreClock</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kind="variable"><name>AHBPrescTable</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1ga5b4f8b768465842cf854a8f993b375e9" kind="variable"><name>APBPrescTable</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kind="function"><name>SystemInit</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kind="function"><name>SystemCoreClockUpdate</name></member>
+  </compound>
+  <compound refid="tim_8c" kind="file"><name>tim.c</name>
+    <member refid="tim_8c_1a25fc663547539bc49fecc0011bd76ab5" kind="variable"><name>htim1</name></member>
+    <member refid="tim_8c_1aac3d2c59ee0e3bbae1b99529a154eb62" kind="variable"><name>htim3</name></member>
+    <member refid="tim_8c_1ad1f9d42690163f73f73e5b820c81ca14" kind="function"><name>MX_TIM1_Init</name></member>
+    <member refid="tim_8c_1a7912f2916786a2c33cb6fb8259ade58c" kind="function"><name>MX_TIM3_Init</name></member>
+    <member refid="tim_8c_1acc04a9bb2813334b6e3585d1f16e5199" kind="function"><name>HAL_TIM_PWM_MspInit</name></member>
+    <member refid="tim_8c_1ac9447b4beb065a4630e94c133d7fd97c" kind="function"><name>HAL_TIM_Encoder_MspInit</name></member>
+    <member refid="tim_8c_1a708f19bbc41b292fccf38f2d9796c46a" kind="function"><name>HAL_TIM_MspPostInit</name></member>
+    <member refid="tim_8c_1ab862d9bf6ab68a9201719c992c3f4b43" kind="function"><name>HAL_TIM_PWM_MspDeInit</name></member>
+    <member refid="tim_8c_1aa45a7ed70c5190ddc921cc667a00e801" kind="function"><name>HAL_TIM_Encoder_MspDeInit</name></member>
+  </compound>
+  <compound refid="usart_8c" kind="file"><name>usart.c</name>
+    <member refid="usart_8c_1aa9479c261d65eecedd3d9582f7f0f89c" kind="variable"><name>huart2</name></member>
+    <member refid="usart_8c_1ab7c63c1b0f65db92b6a4ea19edf957e1" kind="variable"><name>huart3</name></member>
+    <member refid="usart_8c_1a052088fe5bb3f807a4b2502e664fd4fd" kind="function"><name>MX_USART2_UART_Init</name></member>
+    <member refid="usart_8c_1a3d04b903a77089f6ce08dd0bf1c81a81" kind="function"><name>MX_USART3_UART_Init</name></member>
+    <member refid="usart_8c_1a62a25476866998c7aadfb5c0864fa349" kind="function"><name>HAL_UART_MspInit</name></member>
+    <member refid="usart_8c_1a94cd2c58add4f2549895a03bf267622e" kind="function"><name>HAL_UART_MspDeInit</name></member>
+  </compound>
+  <compound refid="group___c_m_s_i_s" kind="group"><name>CMSIS</name>
+  </compound>
+  <compound refid="group__stm32g4xx__system" kind="group"><name>stm32g4xx_system</name>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___includes" kind="group"><name>STM32G4xx_System_Private_Includes</name>
+    <member refid="group___s_t_m32_g4xx___system___private___includes_1gaeafcff4f57440c60e64812dddd13e7cb" kind="define"><name>HSE_VALUE</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___includes_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kind="define"><name>HSI_VALUE</name></member>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___types_definitions" kind="group"><name>STM32G4xx_System_Private_TypesDefinitions</name>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___defines" kind="group"><name>STM32G4xx_System_Private_Defines</name>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___macros" kind="group"><name>STM32G4xx_System_Private_Macros</name>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___variables" kind="group"><name>STM32G4xx_System_Private_Variables</name>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6" kind="variable"><name>SystemCoreClock</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1ga6e1d9cd666f0eacbfde31e9932a93466" kind="variable"><name>AHBPrescTable</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___variables_1ga5b4f8b768465842cf854a8f993b375e9" kind="variable"><name>APBPrescTable</name></member>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___function_prototypes" kind="group"><name>STM32G4xx_System_Private_FunctionPrototypes</name>
+  </compound>
+  <compound refid="group___s_t_m32_g4xx___system___private___functions" kind="group"><name>STM32G4xx_System_Private_Functions</name>
+    <member refid="group___s_t_m32_g4xx___system___private___functions_1ga93f514700ccf00d08dbdcff7f1224eb2" kind="function"><name>SystemInit</name></member>
+    <member refid="group___s_t_m32_g4xx___system___private___functions_1gae0c36a9591fe6e9c45ecb21a794f0f0f" kind="function"><name>SystemCoreClockUpdate</name></member>
+  </compound>
+</doxygenindex>

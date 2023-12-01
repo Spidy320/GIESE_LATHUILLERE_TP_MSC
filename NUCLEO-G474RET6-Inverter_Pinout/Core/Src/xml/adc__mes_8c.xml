@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="adc__mes_8c" kind="file" language="C++">
+    <compoundname>adc_mes.c</compoundname>
+    <includes local="yes">main.h</includes>
+    <includes local="yes">adc_mes.h</includes>
+    <includes local="yes">adc.h</includes>
+    <includes local="no">stdio.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>adc_mes.c</label>
+        <link refid="adc__mes_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>adc.h</label>
+      </node>
+      <node id="3">
+        <label>adc_mes.h</label>
+      </node>
+      <node id="2">
+        <label>main.h</label>
+      </node>
+      <node id="5">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="adc__mes_8c_1a327401b93f45443e51556bcb1bd7c7b7" prot="public" static="no">
+        <name>ADC_BUFFER</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="14" column="9" bodyfile="adc_mes.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="adc__mes_8c_1a22b804736f5648d52f639b2647d4ed13" prot="public" static="no" extern="yes" mutable="no">
+        <type>ADC_HandleTypeDef</type>
+        <definition>ADC_HandleTypeDef hadc1</definition>
+        <argsstring></argsstring>
+        <name>hadc1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="16" column="26" bodyfile="adc.c" bodystart="27" bodyend="-1" declfile="adc_mes.c" declline="16" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1aa9479c261d65eecedd3d9582f7f0f89c" prot="public" static="no" extern="yes" mutable="no">
+        <type>UART_HandleTypeDef</type>
+        <definition>UART_HandleTypeDef huart2</definition>
+        <argsstring></argsstring>
+        <name>huart2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="17" column="27" bodyfile="usart.c" bodystart="27" bodyend="-1" declfile="adc_mes.c" declline="17" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1a25fc663547539bc49fecc0011bd76ab5" prot="public" static="no" extern="yes" mutable="no">
+        <type>TIM_HandleTypeDef</type>
+        <definition>TIM_HandleTypeDef htim1</definition>
+        <argsstring></argsstring>
+        <name>htim1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="18" column="26" bodyfile="tim.c" bodystart="27" bodyend="-1" declfile="adc_mes.c" declline="18" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1aac3d2c59ee0e3bbae1b99529a154eb62" prot="public" static="no" extern="yes" mutable="no">
+        <type>TIM_HandleTypeDef</type>
+        <definition>TIM_HandleTypeDef htim3</definition>
+        <argsstring></argsstring>
+        <name>htim3</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="19" column="26" bodyfile="tim.c" bodystart="28" bodyend="-1" declfile="adc_mes.c" declline="19" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1ae86c612c90d5925942689ce53f1ae7ab" prot="public" static="no" extern="yes" mutable="no">
+        <type>int</type>
+        <definition>int sens_rotation</definition>
+        <argsstring></argsstring>
+        <name>sens_rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="20" column="12" bodyfile="motor.c" bodystart="19" bodyend="-1" declfile="adc_mes.c" declline="20" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1a0dbc5367ecdac8dc3e605c99333d9ad8" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t error_calib[]</definition>
+        <argsstring>[]</argsstring>
+        <name>error_calib</name>
+        <initializer>= &quot;Can&apos;t calibrate adc\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="26" column="15" bodyfile="adc_mes.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1aad93660a1794f28f3205b2659907c99d" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t error_start[]</definition>
+        <argsstring>[]</argsstring>
+        <name>error_start</name>
+        <initializer>= &quot;Can&apos;t start adc\r\n&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="27" column="15" bodyfile="adc_mes.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1a054bc0852af05ea870d9c583b4de91ae" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t courant_mes</definition>
+        <argsstring></argsstring>
+        <name>courant_mes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="30" column="10" bodyfile="adc_mes.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1af90a5e754147168160d1b11432e56a88" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t val_vitesse_t0</definition>
+        <argsstring></argsstring>
+        <name>val_vitesse_t0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="31" column="10" bodyfile="adc_mes.c" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1af01328c68f2ab65730dc168f43ca788d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t val_vitesse_t1</definition>
+        <argsstring></argsstring>
+        <name>val_vitesse_t1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="32" column="10" bodyfile="adc_mes.c" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="adc__mes_8c_1a806942924c41583c4b6eb5277bb6d976" prot="public" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t val_vitesse</definition>
+        <argsstring></argsstring>
+        <name>val_vitesse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="33" column="9" bodyfile="adc_mes.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="adc__mes_8c_1a5aa4e6458118db174005468303c289e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Adc_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>Adc_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Initialisation de l&apos;ADC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>void</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="42" column="6" bodyfile="adc_mes.c" bodystart="42" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t Mes_Courant</definition>
+        <argsstring>(void)</argsstring>
+        <name>Mes_Courant</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Mesure le courant et le convertit en mA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>void</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>courant_mA la valeur du courant mesuré en mA </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="59" column="9" bodyfile="adc_mes.c" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t Mesure_Vitesse</definition>
+        <argsstring>(void)</argsstring>
+        <name>Mesure_Vitesse</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Mesure la vitesse de rotation du moteur et la convertit en tr/min. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>void</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>val_vitesse la valeur de la vitesse de rotation mesurée en tr/min </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="adc_mes.c" line="72" column="9" bodyfile="adc_mes.c" bodystart="72" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>mesures du courant et de la vitesse </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Colin L, Lucas G </para>
+</simplesect>
+<simplesect kind="version"><para>1 </para>
+</simplesect>
+<simplesect kind="date"><para>20 octobre 2023 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;main.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;adc_mes.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;adc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ADC_BUFFER<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>ADC_HandleTypeDef<sp/>hadc1;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UART_HandleTypeDef<sp/>huart2;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>TIM_HandleTypeDef<sp/>htim1;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>TIM_HandleTypeDef<sp/>htim3;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sens_rotation;<sp/></highlight><highlight class="comment">//<sp/>savoir<sp/>dans<sp/>quel<sp/>sens<sp/>tourne<sp/>le<sp/>moteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fonction<sp/>de<sp/>transfert<sp/>du<sp/>courant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I<sp/>=<sp/>1/Sn<sp/>*<sp/>(3300/4095<sp/>*<sp/>Vm<sp/>-<sp/>V0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Sn<sp/>=<sp/>50<sp/>mV/A<sp/>,<sp/>V0<sp/>=<sp/>1.65<sp/>V<sp/>,<sp/>Vm<sp/>=<sp/>courant_mes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>error_calib[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>calibrate<sp/>adc\r\n&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>messages<sp/>d&apos;erreur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>error_start[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Can&apos;t<sp/>start<sp/>adc\r\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">uint32_t<sp/>courant_mes;<sp/></highlight><highlight class="comment">//<sp/>endroit<sp/>ou<sp/>la<sp/>valeur<sp/>du<sp/>courant<sp/>est<sp/>stockée</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">uint32_t<sp/>val_vitesse_t0;<sp/></highlight><highlight class="comment">//<sp/>permet<sp/>de<sp/>mesure<sp/>la<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">uint32_t<sp/>val_vitesse_t1;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">int32_t<sp/>val_vitesse;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="adc__mes_8c_1a5aa4e6458118db174005468303c289e1" kindref="member">Adc_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//<sp/>initialisation<sp/>de<sp/>l&apos;ADC<sp/>et<sp/>du<sp/>DMA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_OK<sp/>!=<sp/>HAL_ADCEx_Calibration_Start(&amp;hadc1,<sp/>ADC_SINGLE_ENDED)){</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>error_calib,<sp/>21,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HAL_OK<sp/>!=<sp/>HAL_ADC_Start_DMA(&amp;hadc1,<sp/>&amp;courant_mes,<sp/>ADC_BUFFER)){</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>error_start,<sp/>17,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIM_Base_Start(&amp;htim1);<sp/></highlight><highlight class="comment">//<sp/>lancement<sp/>du<sp/>timer<sp/>pour<sp/>la<sp/>conversion<sp/>de<sp/>l&apos;ADC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">int32_t<sp/><ref refid="adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb" kindref="member">Mes_Courant</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//<sp/>mesure<sp/>du<sp/>courant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>courant_mA<sp/>=<sp/>(1000/50)*((courant_mes)*(3300000/4095)<sp/>-<sp/>1650000);<sp/></highlight><highlight class="comment">//<sp/>multiplication<sp/>par<sp/>1000<sp/>pour<sp/>eviter<sp/>les<sp/>divisions<sp/>de<sp/>floats</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>courant_mA<sp/>=<sp/>courant_mA<sp/>/<sp/>1000;<sp/></highlight><highlight class="comment">//<sp/>division<sp/>par<sp/>1000<sp/>pour<sp/>revenir<sp/>en<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>courant_mA;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">int32_t<sp/><ref refid="adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65" kindref="member">Mesure_Vitesse</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//<sp/>mesure<sp/>de<sp/>la<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>val_vitesse_t0<sp/>=<sp/>__HAL_TIM_GET_COUNTER(&amp;htim3);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_Delay(100);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>val_vitesse_t1<sp/>=<sp/>__HAL_TIM_GET_COUNTER(&amp;htim3);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sens_rotation<sp/>==<sp/>1){<sp/></highlight><highlight class="comment">//<sp/>permet<sp/>d&apos;avoir<sp/>une<sp/>différence<sp/>de<sp/>tick<sp/>positive<sp/>(ou<sp/>on<sp/>a<sp/>dépassé<sp/>le<sp/>compteur)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val_vitesse<sp/>=<sp/>(val_vitesse_t1<sp/>-<sp/>val_vitesse_t0);<sp/></highlight><highlight class="comment">//<sp/>nombre<sp/>de<sp/>tick<sp/>en<sp/>0.1<sp/>sec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val_vitesse<sp/>=<sp/>(val_vitesse_t0<sp/>-<sp/>val_vitesse_t1);<sp/></highlight><highlight class="comment">//<sp/>nombre<sp/>de<sp/>tick<sp/>en<sp/>0.1<sp/>sec</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(val_vitesse<sp/>&lt;<sp/>0){</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val_vitesse<sp/>+=<sp/>65535;<sp/></highlight><highlight class="comment">//<sp/>On<sp/>a<sp/>dépassé<sp/>la<sp/>valeur<sp/>max<sp/>du<sp/>compteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>mesure<sp/>102960<sp/>tick/s<sp/>pour<sp/>alpha<sp/>=<sp/>0.75</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>donc<sp/>1<sp/>tr/s<sp/>=~<sp/>4118<sp/>tick/s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>val_vitesse<sp/>=<sp/>(val_vitesse<sp/>*<sp/>10<sp/>*<sp/>60)<sp/>/<sp/>4118;<sp/></highlight><highlight class="comment">//<sp/>vitesse<sp/>en<sp/>tr/min</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>val_vitesse;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="adc_mes.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,153 @@
+.TH "adc_mes.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+adc_mes.c \- mesures du courant et de la vitesse  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'adc_mes\&.h'\fP
+.br
+\fC#include 'adc\&.h'\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBADC_BUFFER\fP   1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAdc_init\fP (void)"
+.br
+.RI "Initialisation de l'ADC\&. "
+.ti -1c
+.RI "int32_t \fBMes_Courant\fP (void)"
+.br
+.RI "Mesure le courant et le convertit en mA\&. "
+.ti -1c
+.RI "int32_t \fBMesure_Vitesse\fP (void)"
+.br
+.RI "Mesure la vitesse de rotation du moteur et la convertit en tr/min\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "ADC_HandleTypeDef \fBhadc1\fP"
+.br
+.ti -1c
+.RI "UART_HandleTypeDef \fBhuart2\fP"
+.br
+.ti -1c
+.RI "TIM_HandleTypeDef \fBhtim1\fP"
+.br
+.ti -1c
+.RI "TIM_HandleTypeDef \fBhtim3\fP"
+.br
+.ti -1c
+.RI "int \fBsens_rotation\fP"
+.br
+.ti -1c
+.RI "const uint8_t \fBerror_calib\fP [] = 'Can't calibrate adc\\r\\n'"
+.br
+.ti -1c
+.RI "const uint8_t \fBerror_start\fP [] = 'Can't start adc\\r\\n'"
+.br
+.ti -1c
+.RI "uint32_t \fBcourant_mes\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBval_vitesse_t0\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBval_vitesse_t1\fP"
+.br
+.ti -1c
+.RI "int32_t \fBval_vitesse\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+mesures du courant et de la vitesse 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Colin L, Lucas G 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+20 octobre 2023 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void Adc_init (void)"
+
+.PP
+Initialisation de l'ADC\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoid\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "int32_t Mes_Courant (void)"
+
+.PP
+Mesure le courant et le convertit en mA\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoid\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+courant_mA la valeur du courant mesuré en mA 
+.RE
+.PP
+
+.SS "int32_t Mesure_Vitesse (void)"
+
+.PP
+Mesure la vitesse de rotation du moteur et la convertit en tr/min\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoid\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+val_vitesse la valeur de la vitesse de rotation mesurée en tr/min 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

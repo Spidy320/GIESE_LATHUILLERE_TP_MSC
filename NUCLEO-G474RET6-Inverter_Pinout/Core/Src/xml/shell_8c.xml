@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="shell_8c" kind="file" language="C++">
+    <compoundname>shell.c</compoundname>
+    <includes local="yes">shell.h</includes>
+    <includes local="yes">main.h</includes>
+    <includes local="yes">motor.h</includes>
+    <includes local="yes">adc_mes.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdio.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>shell.c</label>
+        <link refid="shell_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>adc_mes.h</label>
+      </node>
+      <node id="3">
+        <label>main.h</label>
+      </node>
+      <node id="4">
+        <label>motor.h</label>
+      </node>
+      <node id="2">
+        <label>shell.h</label>
+      </node>
+      <node id="7">
+        <label>stdio.h</label>
+      </node>
+      <node id="6">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="shell_8c_1aa9479c261d65eecedd3d9582f7f0f89c" prot="public" static="no" extern="yes" mutable="no">
+        <type>UART_HandleTypeDef</type>
+        <definition>UART_HandleTypeDef huart2</definition>
+        <argsstring></argsstring>
+        <name>huart2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="16" column="27" bodyfile="usart.c" bodystart="27" bodyend="-1" declfile="shell.c" declline="16" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a3369aa142a6ea1e89e677006836ee2ff" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t help[]</definition>
+        <argsstring>[]</argsstring>
+        <name>help</name>
+        <initializer>= &quot;Liste des commandes\r\nhelp : donne la liste des commandes\r\npinout : donne la liste des broches connectées\r\nstart : allume le moteur\r\nstop : eteint le moteur\r\n&quot;
+		&quot;speed : modifie la vitesse\r\ncourant : affiche le courant en mA\r\nvitesse : affiche la vitesse du moteur&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="19" column="15" bodyfile="shell.c" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1ac88f7e9fb5c08068a71fdf0108918291" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t pinout[]</definition>
+        <argsstring>[]</argsstring>
+        <name>pinout</name>
+        <initializer>= &quot;PA8 : U\t\tPB13 : U_barre\r\nPA9 : V\t\tPB14 : V_barre\r\nBus_Imes : PC2 (mesure du courant)\r\nEncoder a : PA6\tEncoder b : PA4 (mesure de la vitesse)&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="21" column="15" bodyfile="shell.c" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1aaf2189933bda013fb3c72e886dc5a3d2" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t powerOn[]</definition>
+        <argsstring>[]</argsstring>
+        <name>powerOn</name>
+        <initializer>= &quot;Powering on the motor&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="22" column="15" bodyfile="shell.c" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1aeb39f657e7d4109c7d352e6ad376228a" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t powerOff[]</definition>
+        <argsstring>[]</argsstring>
+        <name>powerOff</name>
+        <initializer>= &quot;Shutting down the motor&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="23" column="15" bodyfile="shell.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a1fd64585fe171b58dc00e267ef1efd0f" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t speedChanged[]</definition>
+        <argsstring>[]</argsstring>
+        <name>speedChanged</name>
+        <initializer>= &quot;Changing speed&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="24" column="15" bodyfile="shell.c" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1afffb9f0c7259f40748797ec408c8becb" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t cmdNotFound[]</definition>
+        <argsstring>[]</argsstring>
+        <name>cmdNotFound</name>
+        <initializer>= &quot;Command not found&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="25" column="15" bodyfile="shell.c" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a755cb53f91881bf4852a1765ffc09dd6" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t started[]</definition>
+        <argsstring>[]</argsstring>
+        <name>started</name>
+        <initializer>= &quot;Bienvenue dans ce super shell !&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="26" column="15" bodyfile="shell.c" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1ac90a286907360b1533f8d2a2a994af7e" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t courant[]</definition>
+        <argsstring>[]</argsstring>
+        <name>courant</name>
+        <initializer>= &quot;Courant : &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="27" column="15" bodyfile="shell.c" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a047ff2c29b5fd455a93f4058d5ef8369" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t courant_txt_ma[]</definition>
+        <argsstring>[]</argsstring>
+        <name>courant_txt_ma</name>
+        <initializer>= &quot; mA&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="28" column="15" bodyfile="shell.c" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1af5812aa8b2bd99f491f020241eb4949e" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t vitesse_txt[]</definition>
+        <argsstring>[]</argsstring>
+        <name>vitesse_txt</name>
+        <initializer>= &quot; tour/min&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="29" column="15" bodyfile="shell.c" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a3d58817be6c13d5f73d7ade9aab88984" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t newLine[]</definition>
+        <argsstring>[]</argsstring>
+        <name>newLine</name>
+        <initializer>= &quot;\r\n&gt;&gt;&gt;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="30" column="15" bodyfile="shell.c" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a7f0a5a2e32844fe97f21c66477350506" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int idxCmd</definition>
+        <argsstring></argsstring>
+        <name>idxCmd</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="33" column="5" bodyfile="shell.c" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a99c89de7e0aef38d558be346ad04cd11" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char cmd[CMD_BUFFER_SIZE]</definition>
+        <argsstring>[CMD_BUFFER_SIZE]</argsstring>
+        <name>cmd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="34" column="6" bodyfile="shell.c" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a7195b267befbb06c81c66e2f6693ec53" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char buffer_cmd[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>buffer_cmd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="35" column="6" bodyfile="shell.c" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a474f4c274489d5191911df29d1eb1951" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char vitesse_str[5]</definition>
+        <argsstring>[5]</argsstring>
+        <name>vitesse_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="36" column="6" bodyfile="shell.c" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="shell_8c_1a3a396b803c4e2fa2837cc9ac8b44f7fe" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char courant_str[5]</definition>
+        <argsstring>[5]</argsstring>
+        <name>courant_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="37" column="6" bodyfile="shell.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="shell_8c_1a6b491d67b6c4e947c244ab3225c2b646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * UART_Create_Cmd</definition>
+        <argsstring>(char *UART_Create_Cmd(void))</argsstring>
+        <name>UART_Create_Cmd</name>
+        <param>
+          <type>char *</type>
+          <declname>UART_Create_Cmd</declname>
+          <array>void</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="48" column="6" bodyfile="shell.c" bodystart="48" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="shell_8c_1a0354400539e9deb5ed062847a6db5106" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UART_Echo</definition>
+        <argsstring>(void)</argsstring>
+        <name>UART_Echo</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Permet d&apos;afficher le caractère entré par l&apos;utilisateur dans le shell. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>void</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="shell.c" line="104" column="6" bodyfile="shell.c" bodystart="104" bodyend="111"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>création du shell qui va permettre d&apos;entrer les consignes du moteur </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Colin L, Lucas G </para>
+</simplesect>
+<simplesect kind="version"><para>1 </para>
+</simplesect>
+<simplesect kind="date"><para>20 octobre 2023 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;shell.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;main.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;motor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;adc_mes.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UART_HandleTypeDef<sp/>huart2;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>définition<sp/>des<sp/>messages<sp/>transmis<sp/>par<sp/>le<sp/>shell</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>help[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Liste<sp/>des<sp/>commandes\r\nhelp<sp/>:<sp/>donne<sp/>la<sp/>liste<sp/>des<sp/>commandes\r\npinout<sp/>:<sp/>donne<sp/>la<sp/>liste<sp/>des<sp/>broches<sp/>connectées\r\nstart<sp/>:<sp/>allume<sp/>le<sp/>moteur\r\nstop<sp/>:<sp/>eteint<sp/>le<sp/>moteur\r\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;speed<sp/>:<sp/>modifie<sp/>la<sp/>vitesse\r\ncourant<sp/>:<sp/>affiche<sp/>le<sp/>courant<sp/>en<sp/>mA\r\nvitesse<sp/>:<sp/>affiche<sp/>la<sp/>vitesse<sp/>du<sp/>moteur&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>pinout[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PA8<sp/>:<sp/>U\t\tPB13<sp/>:<sp/>U_barre\r\nPA9<sp/>:<sp/>V\t\tPB14<sp/>:<sp/>V_barre\r\nBus_Imes<sp/>:<sp/>PC2<sp/>(mesure<sp/>du<sp/>courant)\r\nEncoder<sp/>a<sp/>:<sp/>PA6\tEncoder<sp/>b<sp/>:<sp/>PA4<sp/>(mesure<sp/>de<sp/>la<sp/>vitesse)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>powerOn[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Powering<sp/>on<sp/>the<sp/>motor&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>powerOff[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Shutting<sp/>down<sp/>the<sp/>motor&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>speedChanged[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Changing<sp/>speed&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>cmdNotFound[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Command<sp/>not<sp/>found&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>started[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Bienvenue<sp/>dans<sp/>ce<sp/>super<sp/>shell<sp/>!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>courant[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Courant<sp/>:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>courant_txt_ma[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>mA&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>vitesse_txt[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>tour/min&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>newLine[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\r\n&gt;&gt;&gt;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>____________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Definition<sp/>des<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idxCmd<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>permet<sp/>de<sp/>savoir<sp/>ou<sp/>ajouter<sp/>un<sp/>caractère<sp/>dans<sp/>la<sp/>commande</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cmd[CMD_BUFFER_SIZE];<sp/></highlight><highlight class="comment">//<sp/>contient<sp/>la<sp/>commande</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer_cmd[1];<sp/></highlight><highlight class="comment">//<sp/>dernier<sp/>charactère<sp/>entré</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vitesse_str[5];<sp/></highlight><highlight class="comment">//<sp/>valeur<sp/>de<sp/>la<sp/>vitesse<sp/>en<sp/>texte</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>courant_str[5];<sp/></highlight><highlight class="comment">//<sp/>valeur<sp/>du<sp/>courant<sp/>en<sp/>texte</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fonctions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>UART_Create_Cmd(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>UART_Create_Cmd(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)){<sp/></highlight><highlight class="comment">//<sp/>Création<sp/>et<sp/>reconnaissance<sp/>de<sp/>la<sp/>commande<sp/>entrée<sp/>dans<sp/>le<sp/>shell</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_cmd[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//<sp/>Retour<sp/>à<sp/>la<sp/>ligne<sp/>reconnu,<sp/>reconnaissance<sp/>de<sp/>la<sp/>commande</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;help&quot;</highlight><highlight class="normal">,4))){</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>help,<sp/>264,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;pinout&quot;</highlight><highlight class="normal">,6))){</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>pinout,<sp/>140,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;start&quot;</highlight><highlight class="normal">,5))){</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="motor_8c_1a3015fbe03dc24072b86fa0ff6833944a" kindref="member">Start_Motor</ref>(cmd);<sp/></highlight><highlight class="comment">//<sp/>lancement<sp/>du<sp/>moteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>powerOn,<sp/>23,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;stop&quot;</highlight><highlight class="normal">,4))){</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="motor_8c_1a0837d1a10a6e290010190ec5104b650b" kindref="member">Stop_Motor</ref>();<sp/></highlight><highlight class="comment">//<sp/>arret<sp/>du<sp/>moteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>powerOff,<sp/>23,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;speed&quot;</highlight><highlight class="normal">,5))){</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>speedChanged,<sp/>14,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2" kindref="member">Change_Speed</ref>(cmd);<sp/></highlight><highlight class="comment">//<sp/>modification<sp/>de<sp/>la<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;courant&quot;</highlight><highlight class="normal">,7))){</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>courant_mA<sp/>=<sp/><ref refid="adc__mes_8c_1a09b316bc40428282b934be16ed1c71fb" kindref="member">Mes_Courant</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sprintf(courant_str,<sp/></highlight><highlight class="stringliteral">&quot;%ld&quot;</highlight><highlight class="normal">,<sp/>courant_mA);<sp/></highlight><highlight class="comment">//<sp/>affichage<sp/>du<sp/>courant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>courant,<sp/>10,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>courant_str,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>courant_txt_ma,<sp/>3,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!(strncmp(cmd,</highlight><highlight class="stringliteral">&quot;vitesse&quot;</highlight><highlight class="normal">,7))){</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>vitesse<sp/>=<sp/><ref refid="adc__mes_8c_1a8f7e45efeb8c23b528926bf7b03dcf65" kindref="member">Mesure_Vitesse</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sprintf(vitesse_str,<sp/></highlight><highlight class="stringliteral">&quot;%ld&quot;</highlight><highlight class="normal">,<sp/>vitesse);<sp/></highlight><highlight class="comment">//<sp/>affichage<sp/>de<sp/>la<sp/>vitesse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>vitesse_str,<sp/>strlen(vitesse_str),<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>vitesse_txt,<sp/>9,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>erreur<sp/>si<sp/>la<sp/>commande<sp/>n&apos;est<sp/>pas<sp/>reconnue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>cmdNotFound,<sp/>17,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>5,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idxCmd<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>si<sp/>le<sp/>caractère<sp/>n&apos;est<sp/>pas<sp/>\r,<sp/>on<sp/>ajoute<sp/>le<sp/>caractère<sp/>à<sp/>la<sp/>commande<sp/>en<sp/>cours<sp/>de<sp/>création</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd[idxCmd]<sp/>=<sp/>buffer_cmd[0];</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idxCmd<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(idxCmd<sp/>&gt;<sp/>CMD_BUFFER_SIZE){<sp/></highlight><highlight class="comment">//<sp/>gestion<sp/>de<sp/>l&apos;erreur<sp/>si<sp/>la<sp/>commande<sp/>est<sp/>trop<sp/>longue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idxCmd<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cmd;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="shell_8c_1a0354400539e9deb5ed062847a6db5106" kindref="member">UART_Echo</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){<sp/></highlight><highlight class="comment">//<sp/>affichage<sp/>dans<sp/>le<sp/>shell<sp/>du<sp/>caractère<sp/>tapé<sp/>au<sp/>clavier</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_cmd[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>newLine,<sp/>2,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>buffer_cmd,<sp/>1,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_UART_Receive_IT(&amp;huart2,<sp/>buffer_cmd,<sp/>1);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="shell.c"/>
+  </compounddef>
+</doxygen>

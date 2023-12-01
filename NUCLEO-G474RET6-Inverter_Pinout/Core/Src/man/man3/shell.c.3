@@ -1,0 +1,140 @@
+.TH "shell.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+shell.c \- création du shell qui va permettre d'entrer les consignes du moteur  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'shell\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'motor\&.h'\fP
+.br
+\fC#include 'adc_mes\&.h'\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBUART_Create_Cmd\fP (char *UART_Create_Cmd(void))"
+.br
+.ti -1c
+.RI "void \fBUART_Echo\fP (void)"
+.br
+.RI "Permet d'afficher le caractère entré par l'utilisateur dans le shell\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "UART_HandleTypeDef \fBhuart2\fP"
+.br
+.ti -1c
+.RI "const uint8_t \fBhelp\fP []"
+.br
+.ti -1c
+.RI "const uint8_t \fBpinout\fP [] = 'PA8 : U\\t\\tPB13 : U_barre\\r\\nPA9 : V\\t\\tPB14 : V_barre\\r\\nBus_Imes : PC2 (mesure du courant)\\r\\nEncoder a : PA6\\tEncoder b : PA4 (mesure de la vitesse)'"
+.br
+.ti -1c
+.RI "const uint8_t \fBpowerOn\fP [] = 'Powering on the motor'"
+.br
+.ti -1c
+.RI "const uint8_t \fBpowerOff\fP [] = 'Shutting down the motor'"
+.br
+.ti -1c
+.RI "const uint8_t \fBspeedChanged\fP [] = 'Changing speed'"
+.br
+.ti -1c
+.RI "const uint8_t \fBcmdNotFound\fP [] = 'Command not found'"
+.br
+.ti -1c
+.RI "const uint8_t \fBstarted\fP [] = 'Bienvenue dans ce super shell !'"
+.br
+.ti -1c
+.RI "const uint8_t \fBcourant\fP [] = 'Courant : '"
+.br
+.ti -1c
+.RI "const uint8_t \fBcourant_txt_ma\fP [] = ' mA'"
+.br
+.ti -1c
+.RI "const uint8_t \fBvitesse_txt\fP [] = ' tour/min'"
+.br
+.ti -1c
+.RI "const uint8_t \fBnewLine\fP [] = '\\r\\n>>>'"
+.br
+.ti -1c
+.RI "int \fBidxCmd\fP = 0"
+.br
+.ti -1c
+.RI "char \fBcmd\fP [CMD_BUFFER_SIZE]"
+.br
+.ti -1c
+.RI "char \fBbuffer_cmd\fP [1]"
+.br
+.ti -1c
+.RI "char \fBvitesse_str\fP [5]"
+.br
+.ti -1c
+.RI "char \fBcourant_str\fP [5]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+création du shell qui va permettre d'entrer les consignes du moteur 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Colin L, Lucas G 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+20 octobre 2023 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void UART_Echo (void)"
+
+.PP
+Permet d'afficher le caractère entré par l'utilisateur dans le shell\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoid\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "const uint8_t help[]"
+\fBInitial value:\fP.PP
+.nf
+= "Liste des commandes\\r\\nhelp : donne la liste des commandes\\r\\npinout : donne la liste des broches connectées\\r\\nstart : allume le moteur\\r\\nstop : eteint le moteur\\r\\n"
+        "speed : modifie la vitesse\\r\\ncourant : affiche le courant en mA\\r\\nvitesse : affiche la vitesse du moteur"
+.fi
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

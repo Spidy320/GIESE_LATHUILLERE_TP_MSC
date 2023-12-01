@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="motor_8c" kind="file" language="C++">
+    <compoundname>motor.c</compoundname>
+    <includes local="yes">motor.h</includes>
+    <includes local="yes">main.h</includes>
+    <includes local="yes">adc_mes.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>motor.c</label>
+        <link refid="motor_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>adc_mes.h</label>
+      </node>
+      <node id="3">
+        <label>main.h</label>
+      </node>
+      <node id="2">
+        <label>motor.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="motor_8c_1aa9479c261d65eecedd3d9582f7f0f89c" prot="public" static="no" extern="yes" mutable="no">
+        <type>UART_HandleTypeDef</type>
+        <definition>UART_HandleTypeDef huart2</definition>
+        <argsstring></argsstring>
+        <name>huart2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="13" column="27" bodyfile="usart.c" bodystart="27" bodyend="-1" declfile="motor.c" declline="13" declcolumn="27"/>
+      </memberdef>
+      <memberdef kind="variable" id="motor_8c_1a25fc663547539bc49fecc0011bd76ab5" prot="public" static="no" extern="yes" mutable="no">
+        <type>TIM_HandleTypeDef</type>
+        <definition>TIM_HandleTypeDef htim1</definition>
+        <argsstring></argsstring>
+        <name>htim1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="14" column="26" bodyfile="tim.c" bodystart="27" bodyend="-1" declfile="motor.c" declline="14" declcolumn="26"/>
+      </memberdef>
+      <memberdef kind="variable" id="motor_8c_1aaee6b8e286567d307b1548c45c83cfb2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int speed_buffer[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>speed_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="16" column="5" bodyfile="motor.c" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="motor_8c_1a8d5a9baf136c6db58dfc7e80120839d1" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t maxSpeed[]</definition>
+        <argsstring>[]</argsstring>
+        <name>maxSpeed</name>
+        <initializer>= &quot;Too fast ! &apos;speed xxxx&apos;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="17" column="15" bodyfile="motor.c" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="motor_8c_1a2a2cc0da58aef3a9590a664761f291d4" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t speedChangedFin[]</definition>
+        <argsstring>[]</argsstring>
+        <name>speedChangedFin</name>
+        <initializer>= &quot;Speed changed&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="18" column="15" bodyfile="motor.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="motor_8c_1ae86c612c90d5925942689ce53f1ae7ab" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sens_rotation</definition>
+        <argsstring></argsstring>
+        <name>sens_rotation</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="19" column="5" bodyfile="motor.c" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Change_Speed</definition>
+        <argsstring>(char cmd[CMD_BUFFER_SIZE])</argsstring>
+        <name>Change_Speed</name>
+        <param>
+          <type>char</type>
+          <declname>cmd</declname>
+          <array>[CMD_BUFFER_SIZE]</array>
+        </param>
+        <briefdescription>
+<para>Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cmd[CMD_BUFFER_SIZE]</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer contenant la consigne du rapport cyclique </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="28" column="6" bodyfile="motor.c" bodystart="28" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="motor_8c_1a3015fbe03dc24072b86fa0ff6833944a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Start_Motor</definition>
+        <argsstring>(char cmd[CMD_BUFFER_SIZE])</argsstring>
+        <name>Start_Motor</name>
+        <param>
+          <type>char</type>
+          <declname>cmd</declname>
+          <array>[CMD_BUFFER_SIZE]</array>
+        </param>
+        <briefdescription>
+<para>Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cmd[CMD_BUFFER_SIZE]</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>buffer contenant la consigne du rapport cyclique qui va être initialisée </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="88" column="6" bodyfile="motor.c" bodystart="88" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="motor_8c_1a0837d1a10a6e290010190ec5104b650b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Stop_Motor</definition>
+        <argsstring>(void)</argsstring>
+        <name>Stop_Motor</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>stop les PWM et donc arrête le moteur </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>void</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="motor.c" line="113" column="6" bodyfile="motor.c" bodystart="113" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>gère la commande du moteur </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Colin L, Lucas G </para>
+</simplesect>
+<simplesect kind="version"><para>1 </para>
+</simplesect>
+<simplesect kind="date"><para>20 octobre 2023 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;motor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;main.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;adc_mes.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UART_HandleTypeDef<sp/>huart2;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>TIM_HandleTypeDef<sp/>htim1;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>speed_buffer[4];</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>maxSpeed[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Too<sp/>fast<sp/>!<sp/>&apos;speed<sp/>xxxx&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>speedChangedFin[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Speed<sp/>changed&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sens_rotation<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2" kindref="member">Change_Speed</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cmd[CMD_BUFFER_SIZE]){</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Debug</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>&quot;\r\n&quot;,<sp/>2,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>cmd,<sp/>10,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>La<sp/>vitesse<sp/>est<sp/>entrée<sp/>dans<sp/>le<sp/>shell<sp/>avec<sp/>4<sp/>caractères<sp/>de<sp/>0000<sp/>à<sp/>1000<sp/>pour<sp/>piloter<sp/>le</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rapport<sp/>cyclique.<sp/>Chaque<sp/>caractère<sp/>est<sp/>converti<sp/>en<sp/>entier<sp/>avec<sp/>-&apos;0&apos;<sp/>et<sp/>il<sp/>faut<sp/>faire</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>attention<sp/>à<sp/>rentrer<sp/>uniquement<sp/>des<sp/>chiffres.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>speed_buffer[0]<sp/>=<sp/>cmd[6]<sp/>-<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>speed_buffer[1]<sp/>=<sp/>cmd[7]<sp/>-<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>speed_buffer[2]<sp/>=<sp/>cmd[8]<sp/>-<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>speed_buffer[3]<sp/>=<sp/>cmd[9]<sp/>-<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Les<sp/>éléments<sp/>du<sp/>buffer<sp/>sont<sp/>concaténés<sp/>pour<sp/>donner<sp/>la<sp/>commande<sp/>du<sp/>rapport<sp/>cyclique.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>speed<sp/>=<sp/>speed_buffer[0]*1000<sp/>+<sp/>speed_buffer[1]*100<sp/>+<sp/>speed_buffer[2]*10<sp/>+<sp/>speed_buffer[3];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pilotage<sp/>du<sp/>sens<sp/>de<sp/>rotation<sp/>:<sp/>rapport<sp/>cyclique<sp/>&gt;<sp/>500<sp/>-&gt;<sp/>sens<sp/>de<sp/>rotation<sp/>positif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;<sp/>500<sp/>-&gt;<sp/>sens<sp/>de<sp/>rotation<sp/>négatif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&lt;<sp/>500){</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sens_rotation<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sens_rotation<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Si<sp/>la<sp/>commande<sp/>du<sp/>rapport<sp/>cyclique<sp/>n&apos;est<sp/>pas<sp/>correcte,<sp/>renvoie<sp/>un<sp/>message<sp/>d&apos;erreur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&gt;<sp/>MAX_SPEED<sp/>||<sp/>speed<sp/>&lt;<sp/>0){</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/></highlight><highlight class="stringliteral">&quot;\r\n&quot;</highlight><highlight class="normal">,<sp/>2,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_UART_Transmit(&amp;huart2,<sp/>maxSpeed,<sp/>23,<sp/>HAL_MAX_DELAY);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Modification<sp/>progressive<sp/>de<sp/>la<sp/>vitesse<sp/>du<sp/>moteur</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>speed_actl<sp/>=<sp/>__HAL_TIM_GET_COMPARE(&amp;htim1,TIM_CHANNEL_1);<sp/></highlight><highlight class="comment">//<sp/>rapport<sp/>cyclique<sp/>actuel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(speed<sp/>&gt;<sp/>speed_actl){<sp/></highlight><highlight class="comment">//<sp/>augmente<sp/>le<sp/>rapport<sp/>cyclique<sp/>envoyé<sp/>aux<sp/>PWM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(speed_actl<sp/>&lt;<sp/>speed){</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed_actl++;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_1,speed_actl);<sp/></highlight><highlight class="comment">//<sp/>change<sp/>les<sp/>PWM<sp/>du<sp/>channel<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_2,MAX_SPEED<sp/>+<sp/>1<sp/>-<sp/>speed_actl);<sp/></highlight><highlight class="comment">//<sp/>change<sp/>les<sp/>PWM<sp/>du<sp/>channel<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_Delay(25);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{<sp/></highlight><highlight class="comment">//<sp/>diminue<sp/>le<sp/>rapport<sp/>cyclique<sp/>envoyé<sp/>aux<sp/>PWM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(speed_actl<sp/>&gt;<sp/>speed){</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed_actl--;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_1,speed_actl);<sp/></highlight><highlight class="comment">//<sp/>change<sp/>les<sp/>PWM<sp/>du<sp/>channel<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_2,MAX_SPEED<sp/>+<sp/>1<sp/>-<sp/>speed_actl);<sp/></highlight><highlight class="comment">//<sp/>change<sp/>les<sp/>PWM<sp/>du<sp/>channel<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_Delay(25);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="motor_8c_1a3015fbe03dc24072b86fa0ff6833944a" kindref="member">Start_Motor</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cmd[CMD_BUFFER_SIZE]){</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialisation<sp/>du<sp/>rapport<sp/>cyclique<sp/>du<sp/>moteur<sp/>à<sp/>500<sp/>pour<sp/>avoir<sp/>une<sp/>vitesse<sp/>nulle<sp/>au<sp/>démarrage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_1,500);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>__HAL_TIM_SET_COMPARE(&amp;htim1,TIM_CHANNEL_2,500);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>initialise<sp/>le<sp/>buffer<sp/>à<sp/>0500<sp/>pour<sp/>avoir<sp/>une<sp/>valeur<sp/>de<sp/>base<sp/>et<sp/>éviter<sp/>les<sp/>erreurs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>cmd[6]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>cmd[7]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;5&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>cmd[8]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>cmd[9]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Démarage<sp/>des<sp/>PWM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIM_PWM_Start(&amp;htim1,<sp/>TIM_CHANNEL_1);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIMEx_PWMN_Start(&amp;htim1,<sp/>TIM_CHANNEL_1);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIM_PWM_Start(&amp;htim1,<sp/>TIM_CHANNEL_2);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIMEx_PWMN_Start(&amp;htim1,<sp/>TIM_CHANNEL_2);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="motor_8c_1a0837d1a10a6e290010190ec5104b650b" kindref="member">Stop_Motor</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Arrêt<sp/>des<sp/>PWM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIM_PWM_Stop(&amp;htim1,<sp/>TIM_CHANNEL_1);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIMEx_PWMN_Stop(&amp;htim1,<sp/>TIM_CHANNEL_1);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIM_PWM_Stop(&amp;htim1,<sp/>TIM_CHANNEL_2);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>HAL_TIMEx_PWMN_Stop(&amp;htim1,<sp/>TIM_CHANNEL_2);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="motor.c"/>
+  </compounddef>
+</doxygen>

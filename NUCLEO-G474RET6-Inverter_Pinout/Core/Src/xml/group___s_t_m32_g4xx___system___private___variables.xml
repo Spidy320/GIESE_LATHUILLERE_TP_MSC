@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="group___s_t_m32_g4xx___system___private___variables" kind="group">
+    <compoundname>STM32G4xx_System_Private_Variables</compoundname>
+    <title>STM32G4xx_System_Private_Variables</title>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="group___s_t_m32_g4xx___system___private___variables_1gaa3cd3e43291e81e795d642b79b6088e6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t SystemCoreClock</definition>
+        <argsstring></argsstring>
+        <name>SystemCoreClock</name>
+        <initializer>= <ref refid="group___s_t_m32_g4xx___system___private___includes_1gaaa8c76e274d0f6dd2cefb5d0b17fbc37" kindref="member">HSI_VALUE</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="system_stm32g4xx.c" line="152" column="12" bodyfile="system_stm32g4xx.c" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___s_t_m32_g4xx___system___private___variables_1ga6e1d9cd666f0eacbfde31e9932a93466" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t AHBPrescTable[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>AHBPrescTable</name>
+        <initializer>= {0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U, 6U, 7U, 8U, 9U}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="system_stm32g4xx.c" line="154" column="17" bodyfile="system_stm32g4xx.c" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___s_t_m32_g4xx___system___private___variables_1ga5b4f8b768465842cf854a8f993b375e9" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t APBPrescTable[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>APBPrescTable</name>
+        <initializer>=  {0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="system_stm32g4xx.c" line="155" column="17" bodyfile="system_stm32g4xx.c" bodystart="155" bodyend="155"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

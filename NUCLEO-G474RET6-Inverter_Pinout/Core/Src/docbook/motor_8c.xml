@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_motor_8c" xml:lang="en-US">
+<title>motor.c File Reference</title>
+<indexterm><primary>motor.c</primary></indexterm>
+<para>
+
+<para>gère la commande du moteur </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;motor.h&quot;<?linebreak?>#include &quot;main.h&quot;<?linebreak?>#include &quot;adc_mes.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2">Change_Speed</link> (char cmd[CMD_BUFFER_SIZE])</para>
+
+<para>Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur. </para>
+</listitem>
+            <listitem><para>void <link linkend="_motor_8c_1a3015fbe03dc24072b86fa0ff6833944a">Start_Motor</link> (char cmd[CMD_BUFFER_SIZE])</para>
+
+<para>Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage. </para>
+</listitem>
+            <listitem><para>void <link linkend="_motor_8c_1a0837d1a10a6e290010190ec5104b650b">Stop_Motor</link> (void)</para>
+
+<para>stop les PWM et donc arrête le moteur </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_motor_8c_1aa9479c261d65eecedd3d9582f7f0f89c"/>UART_HandleTypeDef <emphasis role="strong">huart2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_motor_8c_1a25fc663547539bc49fecc0011bd76ab5"/>TIM_HandleTypeDef <emphasis role="strong">htim1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_motor_8c_1aaee6b8e286567d307b1548c45c83cfb2"/>int <emphasis role="strong">speed_buffer</emphasis> [4]</para>
+</listitem>
+            <listitem><para><anchor xml:id="_motor_8c_1a8d5a9baf136c6db58dfc7e80120839d1"/>const uint8_t <emphasis role="strong">maxSpeed</emphasis> [] = &quot;Too fast ! &apos;speed xxxx&apos;&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_motor_8c_1a2a2cc0da58aef3a9590a664761f291d4"/>const uint8_t <emphasis role="strong">speedChangedFin</emphasis> [] = &quot;Speed changed&quot;</para>
+</listitem>
+            <listitem><para><anchor xml:id="_motor_8c_1ae86c612c90d5925942689ce53f1ae7ab"/>int <emphasis role="strong">sens_rotation</emphasis> = 1</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>gère la commande du moteur </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Colin L, Lucas G </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>20 octobre 2023 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_motor_8c_1a07f9e98140eb6e008858dd3af2fb58e2"/><section>
+    <title>Change_Speed()</title>
+<indexterm><primary>Change_Speed</primary><secondary>motor.c</secondary></indexterm>
+<indexterm><primary>motor.c</primary><secondary>Change_Speed</secondary></indexterm>
+<para><computeroutput>void Change_Speed (char cmd[CMD_BUFFER_SIZE])</computeroutput></para><para>
+
+<para>Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cmd[CMD_BUFFER_SIZE]</entry><entry>
+<para>buffer contenant la consigne du rapport cyclique </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_motor_8c_1a3015fbe03dc24072b86fa0ff6833944a"/><section>
+    <title>Start_Motor()</title>
+<indexterm><primary>Start_Motor</primary><secondary>motor.c</secondary></indexterm>
+<indexterm><primary>motor.c</primary><secondary>Start_Motor</secondary></indexterm>
+<para><computeroutput>void Start_Motor (char cmd[CMD_BUFFER_SIZE])</computeroutput></para><para>
+
+<para>Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>cmd[CMD_BUFFER_SIZE]</entry><entry>
+<para>buffer contenant la consigne du rapport cyclique qui va être initialisée </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_motor_8c_1a0837d1a10a6e290010190ec5104b650b"/><section>
+    <title>Stop_Motor()</title>
+<indexterm><primary>Stop_Motor</primary><secondary>motor.c</secondary></indexterm>
+<indexterm><primary>motor.c</primary><secondary>Stop_Motor</secondary></indexterm>
+<para><computeroutput>void Stop_Motor (void )</computeroutput></para><para>
+
+<para>stop les PWM et donc arrête le moteur </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>void</entry><entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

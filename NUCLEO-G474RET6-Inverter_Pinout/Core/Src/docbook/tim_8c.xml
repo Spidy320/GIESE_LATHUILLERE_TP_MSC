@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tim_8c" xml:lang="en-US">
+<title>tim.c File Reference</title>
+<indexterm><primary>tim.c</primary></indexterm>
+<para>
+
+<para>This file provides code for the configuration of the TIM instances. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;tim.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_tim_8c_1ad1f9d42690163f73f73e5b820c81ca14"/>void <emphasis role="strong">MX_TIM1_Init</emphasis> (void)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_tim_8c_1a7912f2916786a2c33cb6fb8259ade58c"/>void <emphasis role="strong">MX_TIM3_Init</emphasis> (void)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_tim_8c_1acc04a9bb2813334b6e3585d1f16e5199"/>void <emphasis role="strong">HAL_TIM_PWM_MspInit</emphasis> (TIM_HandleTypeDef *tim_pwmHandle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_tim_8c_1ac9447b4beb065a4630e94c133d7fd97c">HAL_TIM_Encoder_MspInit</link> (TIM_HandleTypeDef *tim_encoderHandle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_tim_8c_1a708f19bbc41b292fccf38f2d9796c46a">HAL_TIM_MspPostInit</link> (TIM_HandleTypeDef *timHandle)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_tim_8c_1ab862d9bf6ab68a9201719c992c3f4b43"/>void <emphasis role="strong">HAL_TIM_PWM_MspDeInit</emphasis> (TIM_HandleTypeDef *tim_pwmHandle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_tim_8c_1aa45a7ed70c5190ddc921cc667a00e801">HAL_TIM_Encoder_MspDeInit</link> (TIM_HandleTypeDef *tim_encoderHandle)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_tim_8c_1a25fc663547539bc49fecc0011bd76ab5"/>TIM_HandleTypeDef <emphasis role="strong">htim1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_tim_8c_1aac3d2c59ee0e3bbae1b99529a154eb62"/>TIM_HandleTypeDef <emphasis role="strong">htim3</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This file provides code for the configuration of the TIM instances. </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_tim_8c_1aa45a7ed70c5190ddc921cc667a00e801"/><section>
+    <title>HAL_TIM_Encoder_MspDeInit()</title>
+<indexterm><primary>HAL_TIM_Encoder_MspDeInit</primary><secondary>tim.c</secondary></indexterm>
+<indexterm><primary>tim.c</primary><secondary>HAL_TIM_Encoder_MspDeInit</secondary></indexterm>
+<para><computeroutput>void HAL_TIM_Encoder_MspDeInit (TIM_HandleTypeDef * tim_encoderHandle)</computeroutput></para>
+<para>TIM3 GPIO Configuration PA4 ---&#8212;&gt; TIM3_CH2 PA6 ---&#8212;&gt; TIM3_CH1 PC8 ---&#8212;&gt; TIM3_CH3</para>
+</section>
+<anchor xml:id="_tim_8c_1ac9447b4beb065a4630e94c133d7fd97c"/><section>
+    <title>HAL_TIM_Encoder_MspInit()</title>
+<indexterm><primary>HAL_TIM_Encoder_MspInit</primary><secondary>tim.c</secondary></indexterm>
+<indexterm><primary>tim.c</primary><secondary>HAL_TIM_Encoder_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_TIM_Encoder_MspInit (TIM_HandleTypeDef * tim_encoderHandle)</computeroutput></para>
+<para>TIM3 GPIO Configuration PA4 ---&#8212;&gt; TIM3_CH2 PA6 ---&#8212;&gt; TIM3_CH1 PC8 ---&#8212;&gt; TIM3_CH3</para>
+</section>
+<anchor xml:id="_tim_8c_1a708f19bbc41b292fccf38f2d9796c46a"/><section>
+    <title>HAL_TIM_MspPostInit()</title>
+<indexterm><primary>HAL_TIM_MspPostInit</primary><secondary>tim.c</secondary></indexterm>
+<indexterm><primary>tim.c</primary><secondary>HAL_TIM_MspPostInit</secondary></indexterm>
+<para><computeroutput>void HAL_TIM_MspPostInit (TIM_HandleTypeDef * timHandle)</computeroutput></para>
+<para>TIM1 GPIO Configuration PB13 ---&#8212;&gt; TIM1_CH1N PB14 ---&#8212;&gt; TIM1_CH2N PB15 ---&#8212;&gt; TIM1_CH3N PA8 ---&#8212;&gt; TIM1_CH1 PA9 ---&#8212;&gt; TIM1_CH2 PA10 ---&#8212;&gt; TIM1_CH3</para>
+</section>
+</section>
+</section>

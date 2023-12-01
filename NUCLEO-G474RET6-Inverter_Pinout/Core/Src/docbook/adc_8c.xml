@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_adc_8c" xml:lang="en-US">
+<title>adc.c File Reference</title>
+<indexterm><primary>adc.c</primary></indexterm>
+<para>
+
+<para>This file provides code for the configuration of the ADC instances. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;adc.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_adc_8c_1acccd58aa70215a6b184ad242312ffd0c">MX_ADC1_Init</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_adc_8c_1a101e2e3433dfe72bbbd0ae3a84489263">MX_ADC2_Init</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_adc_8c_1ac3139540667c403c5dfd37a99c610b1c">HAL_ADC_MspInit</link> (ADC_HandleTypeDef *adcHandle)</para>
+</listitem>
+            <listitem><para>void <link linkend="_adc_8c_1a3f61f2c2af0f122f81a87af8ad7b4360">HAL_ADC_MspDeInit</link> (ADC_HandleTypeDef *adcHandle)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_adc_8c_1a22b804736f5648d52f639b2647d4ed13"/>ADC_HandleTypeDef <emphasis role="strong">hadc1</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc_8c_1acd9221f1aa19aebfe0b744947f2daf49"/>ADC_HandleTypeDef <emphasis role="strong">hadc2</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_adc_8c_1a1c126854bb1813d31ab4776b21dcc51f"/>DMA_HandleTypeDef <emphasis role="strong">hdma_adc1</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This file provides code for the configuration of the ADC instances. </para>
+
+<para><caution><title>Attention</title>
+
+<para></para>
+</caution>
+Copyright (c) 2023 STMicroelectronics. All rights reserved.</para>
+
+<para>This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-IS. </para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_adc_8c_1a3f61f2c2af0f122f81a87af8ad7b4360"/><section>
+    <title>HAL_ADC_MspDeInit()</title>
+<indexterm><primary>HAL_ADC_MspDeInit</primary><secondary>adc.c</secondary></indexterm>
+<indexterm><primary>adc.c</primary><secondary>HAL_ADC_MspDeInit</secondary></indexterm>
+<para><computeroutput>void HAL_ADC_MspDeInit (ADC_HandleTypeDef * adcHandle)</computeroutput></para>
+<para>ADC1 GPIO Configuration PC2 ---&#8212;&gt; ADC1_IN8 PA1 ---&#8212;&gt; ADC1_IN2 PB0 ---&#8212;&gt; ADC1_IN15 PB1 ---&#8212;&gt; ADC1_IN12</para>
+
+<para>ADC2 GPIO Configuration PC0 ---&#8212;&gt; ADC2_IN6 PC1 ---&#8212;&gt; ADC2_IN7 PC3 ---&#8212;&gt; ADC2_IN9 PA0 ---&#8212;&gt; ADC2_IN1</para>
+</section>
+<anchor xml:id="_adc_8c_1ac3139540667c403c5dfd37a99c610b1c"/><section>
+    <title>HAL_ADC_MspInit()</title>
+<indexterm><primary>HAL_ADC_MspInit</primary><secondary>adc.c</secondary></indexterm>
+<indexterm><primary>adc.c</primary><secondary>HAL_ADC_MspInit</secondary></indexterm>
+<para><computeroutput>void HAL_ADC_MspInit (ADC_HandleTypeDef * adcHandle)</computeroutput></para>
+<para>Initializes the peripherals clocks</para>
+
+<para>ADC1 GPIO Configuration PC2 ---&#8212;&gt; ADC1_IN8 PA1 ---&#8212;&gt; ADC1_IN2 PB0 ---&#8212;&gt; ADC1_IN15 PB1 ---&#8212;&gt; ADC1_IN12</para>
+
+<para>Initializes the peripherals clocks</para>
+
+<para>ADC2 GPIO Configuration PC0 ---&#8212;&gt; ADC2_IN6 PC1 ---&#8212;&gt; ADC2_IN7 PC3 ---&#8212;&gt; ADC2_IN9 PA0 ---&#8212;&gt; ADC2_IN1</para>
+</section>
+<anchor xml:id="_adc_8c_1acccd58aa70215a6b184ad242312ffd0c"/><section>
+    <title>MX_ADC1_Init()</title>
+<indexterm><primary>MX_ADC1_Init</primary><secondary>adc.c</secondary></indexterm>
+<indexterm><primary>adc.c</primary><secondary>MX_ADC1_Init</secondary></indexterm>
+<para><computeroutput>void MX_ADC1_Init (void )</computeroutput></para>
+<para>Common config</para>
+
+<para>Configure the ADC multi-mode</para>
+
+<para>Configure Regular Channel</para>
+</section>
+<anchor xml:id="_adc_8c_1a101e2e3433dfe72bbbd0ae3a84489263"/><section>
+    <title>MX_ADC2_Init()</title>
+<indexterm><primary>MX_ADC2_Init</primary><secondary>adc.c</secondary></indexterm>
+<indexterm><primary>adc.c</primary><secondary>MX_ADC2_Init</secondary></indexterm>
+<para><computeroutput>void MX_ADC2_Init (void )</computeroutput></para>
+<para>Common config</para>
+
+<para>Configure Regular Channel</para>
+</section>
+</section>
+</section>

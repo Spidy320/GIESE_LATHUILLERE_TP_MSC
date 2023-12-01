@@ -1,0 +1,129 @@
+.TH "motor.c" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+motor.c \- gère la commande du moteur  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'motor\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'adc_mes\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBChange_Speed\fP (char cmd[CMD_BUFFER_SIZE])"
+.br
+.RI "Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur\&. "
+.ti -1c
+.RI "void \fBStart_Motor\fP (char cmd[CMD_BUFFER_SIZE])"
+.br
+.RI "Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage\&. "
+.ti -1c
+.RI "void \fBStop_Motor\fP (void)"
+.br
+.RI "stop les PWM et donc arrête le moteur "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "UART_HandleTypeDef \fBhuart2\fP"
+.br
+.ti -1c
+.RI "TIM_HandleTypeDef \fBhtim1\fP"
+.br
+.ti -1c
+.RI "int \fBspeed_buffer\fP [4]"
+.br
+.ti -1c
+.RI "const uint8_t \fBmaxSpeed\fP [] = 'Too fast ! 'speed xxxx''"
+.br
+.ti -1c
+.RI "const uint8_t \fBspeedChangedFin\fP [] = 'Speed changed'"
+.br
+.ti -1c
+.RI "int \fBsens_rotation\fP = 1"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+gère la commande du moteur 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Colin L, Lucas G 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+20 octobre 2023 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void Change_Speed (char cmd[CMD_BUFFER_SIZE])"
+
+.PP
+Modifie le rapport cyclique des PWM pour changer la vitesse de rotation du moteur\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcmd[CMD_BUFFER_SIZE]\fP buffer contenant la consigne du rapport cyclique 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "void Start_Motor (char cmd[CMD_BUFFER_SIZE])"
+
+.PP
+Démare les PWM avec une valeur de rapport cyclique de base de 500 pour assurer un vitesse de rotation nulle au démarage\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcmd[CMD_BUFFER_SIZE]\fP buffer contenant la consigne du rapport cyclique qui va être initialisée 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SS "void Stop_Motor (void)"
+
+.PP
+stop les PWM et donc arrête le moteur 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvoid\fP 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+void 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.
